@@ -1,5 +1,6 @@
 {
   "OIL_DATABASE": {
+    "茶樹": { "family": "桃金孃科", "origin": "澳洲", "lat": -25.2744, "lng": 133.7751, "compounds": ["萜品烯-4-醇", "γ-萜品烯"], "functions": ["抗金黃葡萄球菌/MRSA", "抗念珠菌", "免疫調節"], "mechanism": "抑制細菌生物膜形成，調節gamma球蛋白" },
     "粉紅胡椒": { "family": "漆樹科", "origin": "秘魯", "lat": -9.1900, "lng": -75.0152, "compounds": ["水茴香萜", "月桂烯"], "functions": ["抗骨關節炎", "鎮痛"] },
     "熏陸香": { "family": "漆樹科", "origin": "希臘(契俄斯)", "lat": 38.3678, "lng": 26.0461, "compounds": ["α-蒎烯", "月桂烯"], "functions": ["抗骨關節炎", "靜脈減充血"] },
     "香楊梅": { "family": "楊梅科", "origin": "加拿大", "lat": 56.1304, "lng": -106.3468, "compounds": ["月桂烯"], "functions": ["抗菌", "收斂"] },
