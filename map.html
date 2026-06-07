@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Oil Interactive Map</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        body { margin: 0; padding: 20px; font-family: sans-serif; background: #f4f4f4; }
+        .container { display: flex; gap: 20px; max-width: 1200px; margin: auto; }
+        #oil-map { height: 70vh; flex: 65%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        #oil-info { flex: 35%; padding: 30px; background: #fff; border-radius: 8px; border: 1px solid #eaeaea; overflow-y: auto; height: calc(70vh - 60px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h3, h4 { color: #4a5d4e; margin-top: 0; }
+        .tag { display: inline-block; background: #e9efe9; color: #3a4a3a; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin: 2px 0; }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center; color: #333;">芳香植物產地與化學地圖 (Botanical Origin & Chemistry Map)</h2>
+    
+    <div class="container">
+        <div id="oil-map"></div>
+        
+        <div id="oil-info">
+            <h3>請在地圖上選擇一種植物</h3>
+            <p style="color: #666; line-height: 1.6;">點擊地圖上的標記，探索該精油的產地、化學結構與主要適應症。</p>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. THE GEOGRAPHIC DICTIONARY ---
+        // This tells the map where to put the pins based on the oil's name.
+        // You can easily add more coordinates here later using latlong.net
+        const geoDictionary = {
+            "真實薰衣草": { origin: "Provence, France", lat: 43.93, lng: 5.23 },
+            "穗花薰衣草": { origin: "Spain", lat: 40.46, lng: -3.74 },
+            "茶樹": { origin: "New South Wales, Australia", lat: -31.25, lng: 146.92 },
+            "澳洲尤加利": { origin: "Victoria, Australia", lat: -36.0, lng: 144.0 },
+            "藍膠尤加利": { origin: "Tasmania, Australia", lat: -41.6, lng: 146.3 },
+            "乳香": { origin: "Somalia", lat: 9.5, lng: 49.0 },
+            "沒藥": { origin: "Yemen", lat: 15.5, lng: 48.0 },
+            "依蘭": { origin: "Madagascar", lat: -18.76, lng: 46.86 },
+            "大馬士革玫瑰": { origin: "Kazanlak, Bulgaria", lat: 42.61, lng: 25.39 },
+            "摩洛哥藍艾菊": { origin: "Morocco", lat: 31.79, lng: -7.09 },
+            "羅馬洋甘菊": { origin: "England, UK", lat: 51.5, lng: -0.12 },
+            "德國洋甘菊": { origin: "Germany", lat: 51.16, lng: 10.45 },
+            "佛手柑": { origin: "Calabria, Italy", lat: 38.9, lng: 16.6 },
+            "甜橙": { origin: "Brazil", lat: -14.23, lng: -51.92 },
+            "檸檬": { origin: "Sicily, Italy", lat: 37.59, lng: 14.01 },
+            "胡椒薄荷": { origin: "Washington, USA", lat: 47.75, lng: -120.74 },
+            "迷迭香": { origin: "Mediterranean Region", lat: 39.0, lng: 5.0 },
+            "岩蘭草": { origin: "Haiti", lat: 18.97, lng: -72.28 },
+            "廣藿香": { origin: "Indonesia", lat: -0.78, lng: 113.92 },
+            "黑胡椒": { origin: "Kerala, India", lat: 10.85, lng: 76.27 },
+            "薑": { origin: "Sichuan, China", lat: 30.0, lng: 103.0 },
+            "大西洋雪松": { origin: "Atlas Mountains, Morocco", lat: 33.5, lng: -5.0 },
+            "絲柏": { origin: "Crete, Greece", lat: 35.2, lng: 24.8 },
+            "天竺葵": { origin: "Reunion Island", lat: -21.11, lng: 55.53 }
+        };
+
+        // --- 2. YOUR EXTRACTED DATA ---
+        // /// 📍 PASTE YOUR COPIED DATA HERE 📍 ///
+        // Replace the empty array below with your copied JSON data from Phase 1.
+        const extractedOils = [
+            // Paste data here...
+        ];
+        // /////////////////////////////////////////
+
+        // --- 3. MERGE AND RENDER ---
+        const map = L.map('oil-map').setView([20, 0], 2);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        const infoPanel = document.getElementById('oil-info');
+        let markersPlaced = 0;
+
+        extractedOils.forEach(oil => {
+            // Check if we have coordinates for this oil
+            const geoInfo = geoDictionary[oil.name];
+            
+            if (geoInfo) {
+                markersPlaced++;
+                const marker = L.marker([geoInfo.lat, geoInfo.lng]).addTo(map);
+                
+                // Format compounds into neat tags
+                const compoundTags = oil.compounds.split(', ').map(c => `<span class="tag">${c}</span>`).join(' ');
+                
+                // Format functions into a readable list
+                const functionList = oil.function.split('; ').map(f => `<li style="margin-bottom: 5px;">${f}</li>`).join('');
+
+                marker.on('click', () => {
+                    infoPanel.innerHTML = `
+                        <h2 style="color: #4a5d4e; margin-top: 0; font-size: 24px; border-bottom: 2px solid #eaeaea; padding-bottom: 10px;">${oil.name}</h2>
+                        <p style="color: #888; font-style: italic;">📍 Origin: ${geoInfo.origin}</p>
+                        
+                        <div style="margin-top: 20px;">
+                            <h4 style="margin-bottom: 10px;">化學結構 (Compounds)</h4>
+                            <div style="line-height: 1.8;">${compoundTags}</div>
+                            
+                            <h4 style="margin-top: 20px; margin-bottom: 10px;">主要適應症 (Functions)</h4>
+                            <ul style="margin-top: 0; color: #555; padding-left: 20px;">
+                                ${functionList}
+                            </ul>
+                        </div>
+                    `;
+                    map.flyTo([geoInfo.lat, geoInfo.lng], 5, { duration: 1.5 });
+                });
+            }
+        });
+
+        // Small notification in the browser console for your reference
+        console.log(`Successfully mapped ${markersPlaced} oils. If some are missing, add their coordinates to the geoDictionary!`);
+    </script>
+</body>
+</html>
