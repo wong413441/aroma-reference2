@@ -963,27 +963,5 @@ BLENDS.push(
    oils:[{n:"錫蘭肉桂皮 Cinnamomum verum",p:"1%"},{n:"薑 Zingiber officinalis",p:"1%"},{n:"暹羅木 Fokienia hodginsii",p:"1%"},{n:"任何植物油",p:"97% (基礎油)"}],
    note:"用作全身按摩油，重點塗抹腰背部（腎上腺部位）"}
 );
-  // Disable Right-Click
-document.addEventListener('contextmenu', function (event) {
-    event.preventDefault();
-    return false;
-});
-
-// Disable Text Selection
-document.body.style.userSelect = "none";
-document.body.style.webkitUserSelect = "none";
-
-// Disable F12 and Inspector Shortcuts
-document.addEventListener('keydown', function (event) {
-    if (
-        event.key === 'F12' || 
-        (event.ctrlKey && event.shiftKey && event.key === 'I') || 
-        (event.ctrlKey && event.key === 'u') || 
-        (event.metaKey && event.altKey && event.key === 'I') // For Mac users
-    ) {
-        event.preventDefault();
-        return false;
-    }
-});
 </script>
 
