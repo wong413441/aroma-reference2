@@ -32,8 +32,6 @@
 
     <script>
         // --- 1. THE GEOGRAPHIC DICTIONARY ---
-        // This tells the map where to put the pins based on the oil's name.
-        // You can easily add more coordinates here later using latlong.net
         const geoDictionary = {
             "真實薰衣草": { origin: "Provence, France", lat: 43.93, lng: 5.23 },
             "穗花薰衣草": { origin: "Spain", lat: 40.46, lng: -3.74 },
@@ -62,78 +60,49 @@
         };
 
         // --- 2. YOUR EXTRACTED DATA ---
-        // /// 📍 PASTE YOUR COPIED DATA HERE 📍 ///
-        // Replace the empty array below with your copied JSON data from Phase 1.
+        // This is what valid JSON data looks like. 
         const extractedOils = [
-            // (() => {
-    try {
-        const oilDatabase = {};
-        const rows = document.querySelectorAll('tr');
-        let rowCount = 0; // Added a counter so we can see how many it finds!
-
-        rows.forEach(row => {
-            const cells = row.querySelectorAll('td');
-            
-            // Ensure the row has enough columns
-            if (cells && cells.length >= 4) {
-                
-                // Using textContent instead of innerText so it reads hidden tabs
-                const compound = cells[0]?.textContent?.trim() || "";
-                const mechanism = cells[2]?.textContent?.trim() || "";
-                const oilsRaw = cells[3]?.textContent?.trim() || "";
-                
-                // Skip the header row and only process if there are oils listed
-                if (oilsRaw && !oilsRaw.includes("代表精油")) {
-                    rowCount++;
-                    
-                    // Split the text into an array of individual oil names
-                    const oilNames = oilsRaw.split(/[,、\n]/)
-                                            .map(name => name.replace(/\(.*?\)/g, '').trim())
-                                            .filter(name => name.length > 0);
-                    
-                    // Group everything by the oil name
-                    oilNames.forEach(oilName => {
-                        if (!oilDatabase[oilName]) {
-                            oilDatabase[oilName] = {
-                                name: oilName,
-                                compounds: new Set(),
-                                functions: new Set()
-                            };
-                        }
-                        if (compound) oilDatabase[oilName].compounds.add(compound);
-                        if (mechanism) oilDatabase[oilName].functions.add(mechanism);
-                    });
-                }
+            {
+                "name": "真實薰衣草",
+                "compounds": "乙酸芳樟酯, 芳樟醇",
+                "function": "神經系統安撫; 皮膚修復與促進傷口癒合"
+            },
+            {
+                "name": "茶樹",
+                "compounds": "萜二烯-4-醇, γ-萜品烯",
+                "function": "廣效抗菌抗感染; 激勵免疫系統"
+            },
+            {
+                "name": "澳洲尤加利",
+                "compounds": "1,8-桉油醇",
+                "function": "呼吸道暢通; 祛痰與抗病毒"
+            },
+            {
+                "name": "乳香",
+                "compounds": "α-蒎烯, 檸檬烯",
+                "function": "加深呼吸; 安定情緒與靜心; 老化肌膚保養"
+            },
+            {
+                "name": "佛手柑",
+                "compounds": "檸檬烯, 乙酸芳樟酯, 芳樟醇",
+                "function": "抗憂鬱與提振情緒; 調節神經系統"
+            },
+            {
+                "name": "胡椒薄荷",
+                "compounds": "薄荷腦, 薄荷酮",
+                "function": "消化系統促進; 止痛與清涼提神"
+            },
+            {
+                "name": "羅馬洋甘菊",
+                "compounds": "歐白芷酸異丁酯",
+                "function": "強力鎮靜安眠; 舒緩中樞神經"
+            },
+            {
+                "name": "大馬士革玫瑰",
+                "compounds": "香茅醇, 牻牛兒醇",
+                "function": "滋陰與生殖系統保養; 心輪療癒"
             }
-        });
-
-        // Convert our Sets back into clean, readable text
-        const finalOilsArray = Object.values(oilDatabase).map(oil => ({
-            name: oil.name,
-            compounds: Array.from(oil.compounds).join(', '),
-            function: Array.from(oil.functions).join('; ')
-        }));
-
-        const resultText = JSON.stringify(finalOilsArray, null, 2);
-
-        // Generate the popup screen
-        document.body.innerHTML = `
-          <div style="background: white; padding: 30px; height: 100vh; width: 100vw; position: fixed; top: 0; left: 0; z-index: 9999; overflow-y: scroll;">
-            <h2 style="color: black; margin-top: 0;">Phase 1 Complete!</h2>
-            <p style="color: #333; font-size: 16px;">
-              <b>Diagnostics:</b> We found and processed <b>${rowCount}</b> rows of data.<br><br>
-              Highlight everything inside the box below, copy it (Cmd + C), and save it to a text file. <br>
-              <b>Refresh the page to return your website to normal.</b>
-            </p>
-            <textarea style="width: 100%; height: 70vh; font-family: monospace; font-size: 14px; padding: 15px; border: 2px solid #ccc; border-radius: 8px;">${resultText}</textarea>
-          </div>
-        `;
-    } catch (e) {
-        alert("Oops, there was an error: " + e.message);
-    }
-})();
         ];
-        // /////////////////////////////////////////
 
         // --- 3. MERGE AND RENDER ---
         const map = L.map('oil-map').setView([20, 0], 2);
@@ -146,17 +115,13 @@
         let markersPlaced = 0;
 
         extractedOils.forEach(oil => {
-            // Check if we have coordinates for this oil
             const geoInfo = geoDictionary[oil.name];
             
             if (geoInfo) {
                 markersPlaced++;
                 const marker = L.marker([geoInfo.lat, geoInfo.lng]).addTo(map);
                 
-                // Format compounds into neat tags
                 const compoundTags = oil.compounds.split(', ').map(c => `<span class="tag">${c}</span>`).join(' ');
-                
-                // Format functions into a readable list
                 const functionList = oil.function.split('; ').map(f => `<li style="margin-bottom: 5px;">${f}</li>`).join('');
 
                 marker.on('click', () => {
@@ -179,8 +144,6 @@
             }
         });
 
-        // Small notification in the browser console for your reference
-        console.log(`Successfully mapped ${markersPlaced} oils. If some are missing, add their coordinates to the geoDictionary!`);
     </script>
 </body>
-</html> 
+</html>
