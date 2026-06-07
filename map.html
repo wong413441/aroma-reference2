@@ -1,10 +1,8 @@
-Map 
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>精油世界地圖</title>
+    <title>精油世界地圖與資料庫</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         :root { --primary: #0ea5e9; --glass: rgba(255, 255, 255, 0.8); }
@@ -21,13 +19,14 @@ Map
         #blend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
         .blend-card { background: var(--glass); backdrop-filter: blur(10px); padding: 20px; border-radius: 16px; border-left: 5px solid var(--primary); box-shadow: 0 8px 16px rgba(0,0,0,0.05); }
         .blend-title { font-size: 19px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+        .badge { font-size: 10px; padding: 3px 10px; border-radius: 12px; background: #e0f2fe; color: var(--primary); display: inline-block; margin-bottom: 10px; }
         .blend-row { cursor: pointer; padding: 8px; border-radius: 6px; border-bottom: 1px solid rgba(0,0,0,0.05); transition: 0.2s; }
         .blend-row:hover { background: rgba(14, 165, 233, 0.1); }
         .blend-info { font-size: 11px; color: #475569; margin-top: 4px; }
         
         /* Popup 專業樣式 */
         .popup-content { min-width: 220px; line-height: 1.4; }
-        .tag { display: inline-block; background: #e0f2fe; padding: 2px 6px; border-radius: 4px; margin: 2px; font-size: 10px; color: #0369a1; }
+        .tag { display: inline-block; background: #e0f2fe; padding: 2px 6px; border-radius: 4px; margin: 2px; font-size: 10px; color: #0369a1; border: 1px solid #bae6fd; }
     </style>
 </head>
 <body>
@@ -40,6 +39,7 @@ Map
         <button onclick="toggleStudyMode()">隱藏/顯示詳細資訊</button>
     </div>
 
+    <p id="b-count" style="text-align:center; font-weight:bold; color:#334155; margin-bottom: 15px;"></p>
     <div id="blend-grid"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -51,12 +51,17 @@ Map
         map = L.map('map').setView([20, 0], 2);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; CartoDB' }).addTo(map);
 
-        const res = await fetch('data.json');
-        AROMA_DATA = await res.json();
-        
-        renderMapMarkers(AROMA_DATA.OIL_DATABASE);
-        renderB(AROMA_DATA.BLENDS_LIBRARY);
-        generateSystemFilters();
+        try {
+            const res = await fetch('data.json');
+            AROMA_DATA = await res.json();
+            
+            renderMapMarkers(AROMA_DATA.OIL_DATABASE);
+            renderB(AROMA_DATA.BLENDS_LIBRARY);
+            generateSystemFilters();
+        } catch (error) {
+            console.error("載入 JSON 失敗，請檢查 data.json 是否有語法錯誤:", error);
+            alert("資料庫載入失敗，請確保 data.json 格式正確無誤。");
+        }
     };
 
     function renderMapMarkers(oilDb) {
@@ -65,69 +70,121 @@ Map
                 const marker = L.circleMarker([info.lat, info.lng], { radius: 7, fillColor: '#0ea5e9', color: '#fff', weight: 2, fillOpacity: 0.9 }).addTo(map);
                 markers[name] = marker;
 
-                // 處理 popup 資訊層
-                const compounds = (info.compounds || []).map(c => `<span class="tag">${c}</span>`).join('');
-                const functions = (info.functions || []).map(f => `<li>${f}</li>`).join('');
+                // 防呆處理：有化合物陣列就顯示標籤，沒有就顯示無
+                const compHtml = (info.compounds && Array.isArray(info.compounds)) 
+                    ? info.compounds.map(c => `<span class="tag">${c}</span>`).join('') 
+                    : '<span class="tag" style="background:#f1f5f9; color:#94a3b8; border:none;">暫無紀錄</span>';
+                
+                // 防呆處理：支援新版 functions 陣列 或 舊版 function 字串
+                const funcHtml = (info.functions && Array.isArray(info.functions)) 
+                    ? info.functions.map(f => `<li>${f}</li>`).join('') 
+                    : `<li>${info.function || '暫無紀錄'}</li>`;
 
                 marker.bindPopup(`
                     <div class="popup-content">
-                        <h3 style="margin:0;">${name}</h3>
-                        <small>產地: ${info.origin || '未知'}</small>
-                        <div style="margin-top:8px;"><strong>化學結構:</strong><br>${compounds || '無'}</div>
-                        <div style="margin-top:8px;"><strong>療癒機制:</strong><ul style="padding-left:18px; margin:0;">${functions || '<li>無</li>'}</ul></div>
-                        <button onclick="filterBlendsByOil('${name}')" style="width:100%; margin-top:10px; cursor:pointer;">查看配方</button>
+                        <h3 style="margin:0 0 5px 0; color:#0f172a;">${name}</h3>
+                        <div style="font-size:11px; margin-bottom:8px; color:#64748b;">
+                            🌿 ${info.family || '未知'} | 📍 ${info.origin || '未知'}
+                        </div>
+                        
+                        <div style="margin-bottom:8px;">
+                            <strong style="font-size:12px;">化學結構:</strong><br>${compHtml}
+                        </div>
+                        
+                        <div style="margin-bottom:8px;">
+                            <strong style="font-size:12px;">療癒機制:</strong>
+                            <p style="margin:2px 0; font-size:11px; color:#334;">${info.mechanism || '（請參考下方適應症）'}</p>
+                        </div>
+                        
+                        <div style="margin-bottom:8px;">
+                            <strong style="font-size:12px;">主要適應症:</strong>
+                            <ul style="padding-left:18px; margin:2px 0; font-size:11px;">${funcHtml}</ul>
+                        </div>
+                        
+                        <button onclick="filterBlendsByOil('${name}')" style="width:100%; cursor:pointer; background:var(--primary); color:white; border:none; padding:6px; border-radius:4px; margin-top:5px;">查看相關配方</button>
                     </div>
                 `);
             }
         }
     }
-function renderB(rows) {
-    const grid = document.getElementById('blend-grid');
-    grid.innerHTML = '';
-    rows.forEach(r => {
-        const oilsHtml = r.oils.map(o => {
-            const name = o.n.split(' ')[0];
-            const info = AROMA_DATA.OIL_DATABASE[name] || { family: "未知", origin: "未知", function: "未知" };
-            return `
-                <div class="blend-row" onclick="highlightOnMap('${name}')">
-                    <div style="display:flex; justify-content:space-between; font-weight:bold;">
-                        <span>${o.n}</span><span>${o.p}</span>
+
+    function renderB(rows) {
+        const grid = document.getElementById('blend-grid');
+        grid.innerHTML = '';
+        rows.forEach(r => {
+            const oilsHtml = r.oils.map(o => {
+                const name = o.n.split(' ')[0];
+                const info = AROMA_DATA.OIL_DATABASE[name] || {};
+                
+                // 自動轉換陣列為文字，若無則降級為舊字串
+                let funcDisplay = "未知";
+                if (info.functions && Array.isArray(info.functions)) {
+                    funcDisplay = info.functions.join('、');
+                } else if (info.function) {
+                    funcDisplay = info.function;
+                }
+
+                return `
+                    <div class="blend-row" onclick="highlightOnMap('${name}')">
+                        <div style="display:flex; justify-content:space-between; font-weight:bold; color:var(--primary);">
+                            <span>${o.n}</span><span>${o.p}</span>
+                        </div>
+                        <div class="blend-info" style="display:none; margin-top:4px;">
+                            科屬: ${info.family || '未知'} | 產地: ${info.origin || '未知'} | 效用: ${funcDisplay}
+                        </div>
+                    </div>`;
+            }).join('');
+            
+            grid.innerHTML += `
+                <div class="blend-card">
+                    <div class="blend-title">${r.name}</div>
+                    <span class="badge">${r.sys || '未分類'}</span>
+                    ${oilsHtml}
+                    <div class="blend-note" style="display:none; margin-top:10px; font-size:12px; color:#1e293b; background:#f8fafc; padding:8px; border-radius:6px; border-left:3px solid var(--primary);">
+                        💡 <strong>使用方法:</strong> ${r.note || '無特別說明'}
                     </div>
-                    <div class="blend-info">科屬: ${info.family} | 產地: ${info.origin} | 效用: ${info.function}</div>
                 </div>`;
-        }).join('');
-     
-        grid.innerHTML += `
-            <div class="blend-card">
-                <div class="blend-title">${r.name}</div>
-                <span class="badge">${r.sys}</span>
-                ${oilsHtml}
-                <div class="blend-note" style="margin-top:10px; font-size:12px; font-weight:bold; color:#1e293b;">
-                    💡 使用方法: <span style="font-weight:normal;">${r.note || '無特別說明'}</span>
-                </div>
-            </div>`;
-    });
-    document.getElementById('b-count').textContent = `共 ${rows.length} 個配方`;
-}
- 
+        });
+        
+        const countEl = document.getElementById('b-count');
+        if(countEl) countEl.textContent = `共 ${rows.length} 個配方`;
+    }
 
     function generateSystemFilters() {
         const container = document.getElementById('filter-controls');
-        [...new Set(AROMA_DATA.BLENDS_LIBRARY.map(b => b.sys))].forEach(sys => {
+        container.innerHTML = `
+            <button onclick="resetFilter()" style="background:var(--primary); color:white;">顯示全部</button>
+            <button onclick="toggleStudyMode()">隱藏/顯示詳細資訊</button>
+        `;
+        
+        const systems = [...new Set(AROMA_DATA.BLENDS_LIBRARY.map(b => b.sys).filter(Boolean))];
+        systems.forEach(sys => {
             const btn = document.createElement('button');
             btn.textContent = sys;
-            btn.onclick = () => renderB(AROMA_DATA.BLENDS_LIBRARY.filter(b => b.sys === sys));
+            btn.onclick = () => filterBySystem(sys);
             container.appendChild(btn);
         });
     }
 
     function highlightOnMap(name) {
-        if (markers[name]) { map.setView(markers[name].getLatLng(), 6); markers[name].openPopup(); document.getElementById('map').scrollIntoView({ behavior: 'smooth' }); }
+        if (markers[name]) { 
+            map.setView(markers[name].getLatLng(), 6); 
+            markers[name].openPopup(); 
+            document.getElementById('map').scrollIntoView({ behavior: 'smooth' }); 
+        } else {
+            alert(`目前地圖上沒有標示「${name}」的座標資料。`);
+        }
     }
 
     function filterBlendsByOil(name) { renderB(AROMA_DATA.BLENDS_LIBRARY.filter(b => b.oils.some(o => o.n.includes(name)))); }
+    function filterBySystem(sys) { renderB(AROMA_DATA.BLENDS_LIBRARY.filter(b => b.sys === sys)); }
     function resetFilter() { renderB(AROMA_DATA.BLENDS_LIBRARY); }
-    function toggleStudyMode() { document.querySelectorAll('.blend-info').forEach(el => el.style.display = (el.style.display === 'none') ? 'block' : 'none'); }
+    
+    function toggleStudyMode() { 
+        document.querySelectorAll('.blend-info, .blend-note').forEach(el => {
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }); 
+    }
     </script>
 </body>
 </html>
