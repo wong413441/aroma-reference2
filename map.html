@@ -81,23 +81,35 @@ Map
             }
         }
     }
-
-    function renderB(rows) {
-        const grid = document.getElementById('blend-grid');
-        grid.innerHTML = '';
-        rows.forEach(r => {
-            const oilsHtml = r.oils.map(o => {
-                const name = o.n.split(' ')[0];
-                const info = AROMA_DATA.OIL_DATABASE[name] || {};
-                return `
-                    <div class="blend-row" onclick="highlightOnMap('${name}')">
-                        <div style="font-weight:bold; color:var(--primary);">${o.n} - ${o.p}</div>
-                        <div class="blend-info">科屬: ${info.family || '未知'} | 產地: ${info.origin || '未知'}</div>
-                    </div>`;
-            }).join('');
-            grid.innerHTML += `<div class="blend-card"><div class="blend-title">${r.name}</div>${oilsHtml}</div>`;
-        });
-    }
+function renderB(rows) {
+    const grid = document.getElementById('blend-grid');
+    grid.innerHTML = '';
+    rows.forEach(r => {
+        const oilsHtml = r.oils.map(o => {
+            const name = o.n.split(' ')[0];
+            const info = AROMA_DATA.OIL_DATABASE[name] || { family: "未知", origin: "未知", function: "未知" };
+            return `
+                <div class="blend-row" onclick="highlightOnMap('${name}')">
+                    <div style="display:flex; justify-content:space-between; font-weight:bold;">
+                        <span>${o.n}</span><span>${o.p}</span>
+                    </div>
+                    <div class="blend-info">科屬: ${info.family} | 產地: ${info.origin} | 效用: ${info.function}</div>
+                </div>`;
+        }).join('');
+     
+        grid.innerHTML += `
+            <div class="blend-card">
+                <div class="blend-title">${r.name}</div>
+                <span class="badge">${r.sys}</span>
+                ${oilsHtml}
+                <div class="blend-note" style="margin-top:10px; font-size:12px; font-weight:bold; color:#1e293b;">
+                    💡 使用方法: <span style="font-weight:normal;">${r.note || '無特別說明'}</span>
+                </div>
+            </div>`;
+    });
+    document.getElementById('b-count').textContent = `共 ${rows.length} 個配方`;
+}
+ 
 
     function generateSystemFilters() {
         const container = document.getElementById('filter-controls');
