@@ -12,8 +12,14 @@
         /* 地圖容器樣式 */
         #map { height: 500px; width: 100%; border-radius: 12px; border: 2px solid #cbd5e1; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         
+        /* 標題區與按鈕排版 */
+        .section-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #cbd5e1; padding-bottom: 10px; margin-top: 40px; }
+        .section-header h2 { color: #2c3e50; margin: 0; }
+        #reset-btn { display: none; padding: 8px 16px; background-color: #0ea5e9; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        #reset-btn:hover { background-color: #0284c7; }
+
         /* 配方卡片排版樣式 */
-        #blend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        #blend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 15px;}
         .blend-card { background: white; border: 1px solid #e1e4e8; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .blend-title { font-weight: bold; font-size: 18px; margin-bottom: 12px; color: #2c3e50; border-bottom: 2px solid #eef0f2; padding-bottom: 8px;}
         .blend-indic { margin-bottom: 15px; }
@@ -27,6 +33,8 @@
         /* 地圖彈出視窗樣式 */
         .popup-content h3 { margin: 0 0 5px 0; color: #0f172a; }
         .popup-content p { margin: 4px 0; font-size: 13px; color: #334155; }
+        .popup-btn { margin-top: 10px; width: 100%; padding: 6px; background: #10b981; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .popup-btn:hover { background: #059669; }
     </style>
 </head>
 <body>
@@ -36,8 +44,12 @@
     <!-- 地圖顯示區域 -->
     <div id="map"></div>
 
-    <h2 style="color: #2c3e50; margin-top: 40px; border-bottom: 2px solid #cbd5e1; padding-bottom: 10px;">📋 芳療配方與機制資料庫</h2>
-    <p id="b-count">載入配方中...</p>
+    <div class="section-header" id="blends-section">
+        <h2>📋 芳療配方與機制資料庫</h2>
+        <!-- 重置篩選按鈕 (預設隱藏) -->
+        <button id="reset-btn" onclick="resetFilter()">顯示所有配方 (Show All)</button>
+    </div>
+    <p id="b-count" style="color: #64748b; font-weight: bold;">載入配方中...</p>
 
     <!-- 配方顯示區域 -->
     <div id="blend-grid"></div>
@@ -72,7 +84,6 @@
     // 將精油標記在地圖上
     function renderMapMarkers(oilDb) {
         for (const [oilName, info] of Object.entries(oilDb)) {
-            // 只有當精油資料中包含 lat (緯度) 和 lng (經度) 時才繪製地標
             if (info.lat && info.lng) {
                 const popupHtml = `
                     <div class="popup-content">
@@ -81,17 +92,58 @@
                         <p><b>產地:</b> ${info.origin}</p>
                         <p><b>植物型態:</b> ${info.type}</p>
                         <p><b>療癒機制:</b> ${info.function}</p>
+                        <button class="popup-btn" onclick="filterBlendsByOil('${oilName}')">查看相關配方 👇</button>
                     </div>
                 `;
-                L.marker([info.lat, info.lng]).addTo(map).bindPopup(popupHtml);
+                
+                // 綁定標記並在地圖上繪製
+                const marker = L.marker([info.lat, info.lng]).addTo(map);
+                marker.bindPopup(popupHtml);
+                
+                // 點擊地標時自動篩選
+                marker.on('click', function() {
+                    filterBlendsByOil(oilName);
+                });
             }
         }
+    }
+
+    // 篩選配方邏輯
+    function filterBlendsByOil(clickedOilName) {
+        // 尋找包含該精油名稱的配方
+        const filteredBlends = AROMA_DATA.BLENDS_LIBRARY.filter(blend => {
+            // 檢查配方中的精油列表，看是否有包含點擊的精油名稱
+            return blend.oils.some(o => o.n.includes(clickedOilName));
+        });
+        
+        // 渲染篩選後的配方
+        renderB(filteredBlends);
+        
+        // 更新文字並顯示「重置」按鈕
+        document.getElementById('b-count').textContent = `🎯 已篩選包含「${clickedOilName}」的配方 (共 ${filteredBlends.length} 個)`;
+        document.getElementById('b-count').style.color = '#0ea5e9';
+        document.getElementById('reset-btn').style.display = 'block';
+        
+        // 畫面平滑滾動到配方區域
+        document.getElementById('blends-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 恢復顯示所有配方
+    function resetFilter() {
+        renderB(AROMA_DATA.BLENDS_LIBRARY);
+        document.getElementById('reset-btn').style.display = 'none';
+        document.getElementById('b-count').style.color = '#64748b';
     }
 
     // 配方渲染函數
     function renderB(rows) {
       const grid = document.getElementById('blend-grid');
       grid.innerHTML = ''; 
+      
+      if (rows.length === 0) {
+          grid.innerHTML = '<p style="color:#64748b; margin-top:20px;">此精油目前沒有對應的配方資料。</p>';
+          return;
+      }
       
       rows.forEach(r => {
         const card = document.createElement('div');
@@ -115,7 +167,11 @@
           ${r.note ? `<div class="blend-note">${r.note}</div>` : ''}`;
         grid.appendChild(card);
       });
-      document.getElementById('b-count').textContent = '共載入 ' + rows.length + ' 個配方 (滑鼠停留在精油名稱上可查看機制)';
+      
+      // 只有在顯示所有配方時才更新文字
+      if (document.getElementById('reset-btn').style.display === 'none' || document.getElementById('reset-btn').style.display === '') {
+          document.getElementById('b-count').textContent = '共載入 ' + rows.length + ' 個配方 (滑鼠停留在精油名稱上可查看機制)';
+      }
     }
     </script>
 </body>
