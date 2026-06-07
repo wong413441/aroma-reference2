@@ -65,7 +65,73 @@
         // /// 📍 PASTE YOUR COPIED DATA HERE 📍 ///
         // Replace the empty array below with your copied JSON data from Phase 1.
         const extractedOils = [
-            // Paste data here...
+            // (() => {
+    try {
+        const oilDatabase = {};
+        const rows = document.querySelectorAll('tr');
+        let rowCount = 0; // Added a counter so we can see how many it finds!
+
+        rows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            
+            // Ensure the row has enough columns
+            if (cells && cells.length >= 4) {
+                
+                // Using textContent instead of innerText so it reads hidden tabs
+                const compound = cells[0]?.textContent?.trim() || "";
+                const mechanism = cells[2]?.textContent?.trim() || "";
+                const oilsRaw = cells[3]?.textContent?.trim() || "";
+                
+                // Skip the header row and only process if there are oils listed
+                if (oilsRaw && !oilsRaw.includes("代表精油")) {
+                    rowCount++;
+                    
+                    // Split the text into an array of individual oil names
+                    const oilNames = oilsRaw.split(/[,、\n]/)
+                                            .map(name => name.replace(/\(.*?\)/g, '').trim())
+                                            .filter(name => name.length > 0);
+                    
+                    // Group everything by the oil name
+                    oilNames.forEach(oilName => {
+                        if (!oilDatabase[oilName]) {
+                            oilDatabase[oilName] = {
+                                name: oilName,
+                                compounds: new Set(),
+                                functions: new Set()
+                            };
+                        }
+                        if (compound) oilDatabase[oilName].compounds.add(compound);
+                        if (mechanism) oilDatabase[oilName].functions.add(mechanism);
+                    });
+                }
+            }
+        });
+
+        // Convert our Sets back into clean, readable text
+        const finalOilsArray = Object.values(oilDatabase).map(oil => ({
+            name: oil.name,
+            compounds: Array.from(oil.compounds).join(', '),
+            function: Array.from(oil.functions).join('; ')
+        }));
+
+        const resultText = JSON.stringify(finalOilsArray, null, 2);
+
+        // Generate the popup screen
+        document.body.innerHTML = `
+          <div style="background: white; padding: 30px; height: 100vh; width: 100vw; position: fixed; top: 0; left: 0; z-index: 9999; overflow-y: scroll;">
+            <h2 style="color: black; margin-top: 0;">Phase 1 Complete!</h2>
+            <p style="color: #333; font-size: 16px;">
+              <b>Diagnostics:</b> We found and processed <b>${rowCount}</b> rows of data.<br><br>
+              Highlight everything inside the box below, copy it (Cmd + C), and save it to a text file. <br>
+              <b>Refresh the page to return your website to normal.</b>
+            </p>
+            <textarea style="width: 100%; height: 70vh; font-family: monospace; font-size: 14px; padding: 15px; border: 2px solid #ccc; border-radius: 8px;">${resultText}</textarea>
+          </div>
+        `;
+    } catch (e) {
+        alert("Oops, there was an error: " + e.message);
+    }
+})();
         ];
         // /////////////////////////////////////////
 
