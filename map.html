@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>芳香療法精油地圖與配方庫</title>
+    <title>芳香療法精油互動地圖與配方資料庫</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         body { font-family: "Segoe UI", sans-serif; padding: 20px; background: #f8fafc; margin: 0; }
@@ -13,9 +13,10 @@
         #blend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
         .blend-card { background: white; padding: 20px; border-radius: 12px; border-left: 5px solid #0ea5e9; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .blend-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; color: #1e293b; }
-        .blend-row { display: flex; justify-content: space-between; font-size: 14px; padding: 5px 0; border-bottom: 1px dashed #f1f5f9; cursor: pointer; color: #0ea5e9; }
-        .blend-row:hover { background: #f0fdff; }
-        .blend-note { margin-top: 10px; font-size: 12px; color: #64748b; font-style: italic; }
+        .blend-row { display: block; cursor: pointer; margin-bottom: 12px; padding: 8px; border-radius: 6px; border: 1px solid #f1f5f9; transition: 0.2s; }
+        .blend-row:hover { background: #f0fdff; border-color: #0ea5e9; }
+        .blend-info { font-size: 11px; color: #64748b; margin-top: 4px; line-height: 1.4; }
+        .blend-note { margin-top: 10px; font-size: 12px; color: #666; font-style: italic; }
         .badge { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #e0f2fe; color: #0369a1; margin-bottom: 10px; display: inline-block; }
     </style>
 </head>
@@ -67,7 +68,7 @@
                 const marker = L.marker([info.lat, info.lng]).addTo(map);
                 markers[name] = marker;
                 marker.bindPopup(`<b>${name}</b><br>${info.function}<br>
-                    <button class="popup-btn" onclick="filterBlendsByOil('${name}')" style="width:100%; cursor:pointer;">查看相關配方</button>`);
+                    <button onclick="filterBlendsByOil('${name}')" style="width:100%; cursor:pointer;">查看相關配方</button>`);
             }
         }
     }
@@ -79,10 +80,15 @@
             const oilsHtml = r.oils.map(o => {
                 const name = o.n.split(' ')[0];
                 const info = AROMA_DATA.OIL_DATABASE[name] || { family: "未知", origin: "未知", function: "未知" };
-                const tooltip = `科屬:${info.family} | 產地:${info.origin} | 效用:${info.function}`;
-                return `<div class="blend-row" title="${tooltip}" onclick="highlightOnMap('${name}')">
-                    <span>${o.n}</span><span class="blend-pct">${o.p}</span>
-                </div>`;
+                return `
+                    <div class="blend-row" onclick="highlightOnMap('${name}')">
+                        <div style="display:flex; justify-content:space-between; font-weight:bold; color:#0ea5e9;">
+                            <span>${o.n}</span><span class="blend-pct">${o.p}</span>
+                        </div>
+                        <div class="blend-info">
+                            科屬: ${info.family} | 產地: ${info.origin} | 效用: ${info.function}
+                        </div>
+                    </div>`;
             }).join('');
             grid.innerHTML += `
                 <div class="blend-card">
@@ -114,7 +120,7 @@
     function resetFilter() { renderB(AROMA_DATA.BLENDS_LIBRARY); }
 
     function toggleStudyMode() {
-        document.querySelectorAll('.blend-note, .blend-pct').forEach(el => {
+        document.querySelectorAll('.blend-note, .blend-pct, .blend-info').forEach(el => {
             el.style.display = (el.style.display === 'none') ? 'block' : 'none';
         });
     }
