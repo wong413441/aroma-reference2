@@ -87,16 +87,23 @@
         grid.innerHTML = '';
         rows.forEach(r => {
             const oilsHtml = r.oils.map(o => {
+                // 從名稱開頭擷取純中文名 (例如 "熏陸香 Pistacia lentiscus" -> "熏陸香")
                 const name = o.n.split(' ')[0];
-                const info = AROMA_DATA.OIL_DATABASE[name] || { family: "未知", origin: "未知", function: "未知" };
+                // 從地圖已載入的資料庫 AROMA_DATA.OIL_DATABASE 中抓取資訊
+                const info = AROMA_DATA.OIL_DATABASE[name] || {}; 
+                
                 return `
                     <div class="blend-row" onclick="highlightOnMap('${name}')">
-                        <div style="display:flex; justify-content:space-between; font-weight:bold;">
-                            <span>${o.n}</span><span>${o.p}</span>
+                        <div style="display:flex; justify-content:space-between; font-weight:bold; color:var(--primary);">
+                            <span>${o.n}</span>
+                            <span class="blend-pct">${o.p}</span>
                         </div>
-                        <div class="blend-info">科屬: ${info.family} | 產地: ${info.origin} | 效用: ${info.function}</div>
+                        <div class="blend-info" style="display:none;">
+                            科屬: ${info.family || '未知'} | 產地: ${info.origin || '未知'} | 效用: ${info.function || '未知'}
+                        </div>
                     </div>`;
             }).join('');
+            
             grid.innerHTML += `
                 <div class="blend-card">
                     <div class="blend-title">${r.name}</div>
