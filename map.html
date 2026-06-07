@@ -166,22 +166,32 @@
     }
 
     // 搜尋功能邏輯
-    function searchOil() {
-        const query = document.getElementById('oil-search').value.trim();
-        if (!query) return resetFilter();
+function searchOil() {
+    const query = document.getElementById('oil-search').value.toLowerCase().trim();
+    if (!query) return resetFilter();
 
-        // 1. 過濾下方配方 (包含精油名 或 配方名的都會留下來)
-        const filteredBlends = AROMA_DATA.BLENDS_LIBRARY.filter(b => 
-            b.name.includes(query) || b.oils.some(o => o.n.includes(query))
-        );
-        renderB(filteredBlends);
+    // 1. 搜尋配方 (Blends)
+    const filteredBlends = AROMA_DATA.BLENDS_LIBRARY.filter(b => {
+        const text = [b.name, b.sys, b.note, ...b.oils.map(o => o.n)].join(' ').toLowerCase();
+        return text.includes(query);
+    });
+    renderB(filteredBlends);
 
-        // 2. 尋找地圖上的精油並彈出資訊
-        const matchedKey = Object.keys(AROMA_DATA.OIL_DATABASE).find(k => k.includes(query));
-        if (matchedKey && markers[matchedKey]) {
-            map.setView(markers[matchedKey].getLatLng(), 5);
-            markers[matchedKey].openPopup();
-            document.getElementById('map').scrollIntoView({ behavior: 'smooth' });
+    // 2. 搜尋精油資料庫 (Oils)
+    const matchedKey = Object.keys(AROMA_DATA.OIL_DATABASE).find(k => {
+        const info = AROMA_DATA.OIL_DATABASE[k];
+        const text = [
+            k, info.family, info.origin, 
+            (info.compounds || []).join(' '), 
+            (info.functions || []).join(' '), 
+            info.mechanism
+        ].join(' ').toLowerCase();
+        return text.includes(query);
+    });
+
+    if (matchedKey && markers[matchedKey]) {
+        map.setView(markers[matchedKey].getLatLng(), 6);
+        markers[matchedKey].openPopup();
         }
     }
 
