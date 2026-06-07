@@ -1,3 +1,5 @@
+Map 
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -60,27 +62,20 @@
     function renderMapMarkers(oilDb) {
         for (const [name, info] of Object.entries(oilDb)) {
             if (info.lat && info.lng) {
-                const marker = L.circleMarker([info.lat, info.lng], {
-                    radius: 7, fillColor: '#0ea5e9', color: '#fff', weight: 2, fillOpacity: 0.9
-                }).addTo(map);
+                const marker = L.circleMarker([info.lat, info.lng], { radius: 7, fillColor: '#0ea5e9', color: '#fff', weight: 2, fillOpacity: 0.9 }).addTo(map);
                 markers[name] = marker;
 
-                // 新的渲染邏輯：優先讀取陣列，若無則讀取舊版字串
-                const compHtml = (info.compounds && Array.isArray(info.compounds)) 
-                    ? info.compounds.map(c => `<span class="tag">${c}</span>`).join('') 
-                    : (info.compounds || '暫無資料');
-                
-                const funcHtml = (info.functions && Array.isArray(info.functions)) 
-                    ? info.functions.map(f => `<li>${f}</li>`).join('') 
-                    : `<li>${info.function || '暫無資料'}</li>`;
+                // 處理 popup 資訊層
+                const compounds = (info.compounds || []).map(c => `<span class="tag">${c}</span>`).join('');
+                const functions = (info.functions || []).map(f => `<li>${f}</li>`).join('');
 
                 marker.bindPopup(`
                     <div class="popup-content">
                         <h3 style="margin:0;">${name}</h3>
-                        <div style="font-size:11px; margin-bottom:5px;">科屬: ${info.family || '未知'} | 產地: ${info.origin || '未知'}</div>
-                        <div style="margin-bottom:8px;"><strong>化學結構:</strong><br>${compHtml}</div>
-                        <div style="margin-bottom:8px;"><strong>療癒機制:</strong><ul style="padding-left:18px; margin:0;">${funcHtml}</ul></div>
-                        <button onclick="filterBlendsByOil('${name}')" style="width:100%; cursor:pointer;">查看配方</button>
+                        <small>產地: ${info.origin || '未知'}</small>
+                        <div style="margin-top:8px;"><strong>化學結構:</strong><br>${compounds || '無'}</div>
+                        <div style="margin-top:8px;"><strong>療癒機制:</strong><ul style="padding-left:18px; margin:0;">${functions || '<li>無</li>'}</ul></div>
+                        <button onclick="filterBlendsByOil('${name}')" style="width:100%; margin-top:10px; cursor:pointer;">查看配方</button>
                     </div>
                 `);
             }
@@ -96,27 +91,14 @@
                 const info = AROMA_DATA.OIL_DATABASE[name] || {};
                 return `
                     <div class="blend-row" onclick="highlightOnMap('${name}')">
-                        <div style="display:flex; justify-content:space-between; font-weight:bold; color:var(--primary);">
-                            <span>${o.n}</span>
-                            <span class="blend-pct">${o.p}</span>
-                        </div>
-                        <div class="blend-info" style="display:none;">
-                            科屬: ${info.family || '未知'} | 產地: ${info.origin || '未知'}
-                        </div>
-                        <div class="blend-note" style="display:none; font-size:11px; color:#666; margin-top:2px;">
-                            <strong>用法:</strong> ${r.note || '無特別說明'}
-                        </div>
+                        <div style="font-weight:bold; color:var(--primary);">${o.n} - ${o.p}</div>
+                        <div class="blend-info">科屬: ${info.family || '未知'} | 產地: ${info.origin || '未知'}</div>
                     </div>`;
             }).join('');
-            grid.innerHTML += `
-                <div class="blend-card">
-                    <div class="blend-title">${r.name}</div>
-                    <span class="badge">${r.sys}</span>
-                    ${oilsHtml}
-                </div>`;
+            grid.innerHTML += `<div class="blend-card"><div class="blend-title">${r.name}</div>${oilsHtml}</div>`;
         });
-        document.getElementById('b-count').textContent = `共 ${rows.length} 個配方`;
     }
+
     function generateSystemFilters() {
         const container = document.getElementById('filter-controls');
         [...new Set(AROMA_DATA.BLENDS_LIBRARY.map(b => b.sys))].forEach(sys => {
