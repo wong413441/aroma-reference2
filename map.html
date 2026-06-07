@@ -2,46 +2,54 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>芳香療法精油互動地圖與配方資料庫</title>
+    <title>Nature Bliss 芳療地圖與資料庫</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        body { font-family: "Segoe UI", sans-serif; padding: 20px; background: #f8fafc; margin: 0; }
-        #map { height: 450px; width: 100%; border-radius: 12px; border: 3px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .filter-controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-        .filter-controls button { padding: 8px 16px; border: none; border-radius: 6px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); cursor: pointer; font-weight: 600; }
-        .filter-controls button:hover { background: #e0f2fe; }
+        :root { --primary: #0ea5e9; --glass: rgba(255, 255, 255, 0.7); }
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%); min-height: 100vh; margin: 0; }
+        h1 { color: #1e293b; text-align: center; margin-bottom: 20px; }
+        
+        /* 霧面玻璃風格地圖 */
+        #map { height: 500px; width: 100%; border-radius: 16px; border: 4px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        
+        .filter-controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 25px; }
+        .filter-controls button { padding: 10px 20px; border: none; border-radius: 8px; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); cursor: pointer; font-weight: 600; transition: 0.3s; }
+        .filter-controls button:hover { background: var(--primary); color: white; }
+        
+        /* 玻璃卡片 */
         #blend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-        .blend-card { background: white; padding: 20px; border-radius: 12px; border-left: 5px solid #0ea5e9; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .blend-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; color: #1e293b; }
-        .blend-row { display: block; cursor: pointer; margin-bottom: 12px; padding: 8px; border-radius: 6px; border: 1px solid #f1f5f9; transition: 0.2s; }
-        .blend-row:hover { background: #f0fdff; border-color: #0ea5e9; }
-        .blend-info { font-size: 11px; color: #64748b; margin-top: 4px; line-height: 1.4; }
-        .blend-note { margin-top: 10px; font-size: 12px; color: #666; font-style: italic; }
-        .badge { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #e0f2fe; color: #0369a1; margin-bottom: 10px; display: inline-block; }
+        .blend-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.5); padding: 24px; border-radius: 16px; box-shadow: 0 8px 16px rgba(0,0,0,0.05); }
+        .blend-title { font-size: 19px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+        .blend-row { cursor: pointer; padding: 8px; border-radius: 6px; transition: 0.2s; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .blend-row:hover { background: rgba(14, 165, 233, 0.1); }
+        .blend-info { font-size: 11px; color: #475569; margin-top: 4px; }
+        .badge { font-size: 10px; padding: 3px 10px; border-radius: 12px; background: #e0f2fe; color: var(--primary); display: inline-block; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
-    <h1>🌿 芳香療法系統資料庫</h1>
+    <h1>🌿 Nature Bliss 芳療科學地圖</h1>
     <div id="map"></div>
 
     <div class="filter-controls" id="filter-controls">
-        <button onclick="resetFilter()" style="background:#0ea5e9; color:white;">顯示全部</button>
-        <button onclick="toggleStudyMode()">開關學習模式</button>
+        <button onclick="resetFilter()" style="background:var(--primary); color:white;">顯示全部</button>
+        <button onclick="toggleStudyMode()">隱藏/顯示詳細資訊</button>
     </div>
 
-    <p id="b-count">載入中...</p>
+    <p id="b-count" style="text-align:center; font-weight:bold; color:#334155;"></p>
     <div id="blend-grid"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
     let AROMA_DATA = { OIL_DATABASE: {}, BLENDS_LIBRARY: [] };
-    let map;
-    let markers = {};
+    let map, markers = {};
 
     window.onload = async function() {
         map = L.map('map').setView([20, 0], 2);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        // 使用 CartoDB Light 底圖，視覺更乾淨
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; CartoDB'
+        }).addTo(map);
 
         const res = await fetch('data.json');
         AROMA_DATA = await res.json();
@@ -65,10 +73,11 @@
     function renderMapMarkers(oilDb) {
         for (const [name, info] of Object.entries(oilDb)) {
             if (info.lat && info.lng) {
-                const marker = L.marker([info.lat, info.lng]).addTo(map);
+                const marker = L.circleMarker([info.lat, info.lng], {
+                    radius: 7, fillColor: '#0ea5e9', color: '#fff', weight: 2, fillOpacity: 0.9
+                }).addTo(map);
                 markers[name] = marker;
-                marker.bindPopup(`<b>${name}</b><br>${info.function}<br>
-                    <button onclick="filterBlendsByOil('${name}')" style="width:100%; cursor:pointer;">查看相關配方</button>`);
+                marker.bindPopup(`<b>${name}</b><br><small>${info.family}</small><br><button onclick="filterBlendsByOil('${name}')">查看配方</button>`);
             }
         }
     }
@@ -82,12 +91,10 @@
                 const info = AROMA_DATA.OIL_DATABASE[name] || { family: "未知", origin: "未知", function: "未知" };
                 return `
                     <div class="blend-row" onclick="highlightOnMap('${name}')">
-                        <div style="display:flex; justify-content:space-between; font-weight:bold; color:#0ea5e9;">
-                            <span>${o.n}</span><span class="blend-pct">${o.p}</span>
+                        <div style="display:flex; justify-content:space-between; font-weight:bold;">
+                            <span>${o.n}</span><span>${o.p}</span>
                         </div>
-                        <div class="blend-info">
-                            科屬: ${info.family} | 產地: ${info.origin} | 效用: ${info.function}
-                        </div>
+                        <div class="blend-info">科屬: ${info.family} | 產地: ${info.origin} | 效用: ${info.function}</div>
                     </div>`;
             }).join('');
             grid.innerHTML += `
@@ -120,7 +127,7 @@
     function resetFilter() { renderB(AROMA_DATA.BLENDS_LIBRARY); }
 
     function toggleStudyMode() {
-        document.querySelectorAll('.blend-note, .blend-pct, .blend-info').forEach(el => {
+        document.querySelectorAll('.blend-info, .blend-note').forEach(el => {
             el.style.display = (el.style.display === 'none') ? 'block' : 'none';
         });
     }
