@@ -1593,6 +1593,18 @@
         { "n": "任何植物油", "p": "97% (基礎油)" }
       ],
       "note": "用作全身按摩油，重點塗抹腰背部（腎上腺部位）"
-    }
+    }，
+    {
+      "name": "運動後肌肉酸痛",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "歐洲赤松 Pinus sylvestris", "p": "4 drops" },
+        { "n": "葡萄柚 Citrus paradisi", "p": "4 drops" },
+        { "n": "長青絲柏 Cinnamosma fragrans", "p": "4 drops" },
+        { "n": "山金車 Arnica montana", "p": "94% (基礎油)" }
+      ],
+      "note": "6% to base oil；調配成按摩油每天塗抹"
+      }
   ]
 }
