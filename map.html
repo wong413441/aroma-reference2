@@ -9,10 +9,17 @@
         body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%); min-height: 100vh; margin: 0; }
         h1 { color: #1e293b; text-align: center; margin-bottom: 20px; }
         
-        #map { height: 500px; width: 100%; border-radius: 16px; border: 4px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        #map { height: 500px; width: 100%; border-radius: 16px; border: 4px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 20px; }
         
+        /* 搜尋列與過濾器 */
+        .search-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
+        .search-container input { padding: 10px 15px; width: 100%; max-width: 350px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 14px; outline: none; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+        .search-container input:focus { border-color: var(--primary); }
+        .search-container button { padding: 10px 20px; border-radius: 8px; background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: 0.2s; }
+        .search-container button:hover { background: #0284c7; }
+
         .filter-controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 25px; }
-        .filter-controls button { padding: 10px 20px; border: none; border-radius: 8px; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); cursor: pointer; font-weight: 600; transition: 0.3s; }
+        .filter-controls button { padding: 8px 16px; border: none; border-radius: 8px; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); cursor: pointer; font-weight: 600; font-size: 13px; transition: 0.3s; }
         .filter-controls button:hover { background: var(--primary); color: white; }
         
         /* 玻璃卡片 */
@@ -31,7 +38,13 @@
 </head>
 <body>
 
-    <h1>🌿 精油世界地圖 🌿</h1>
+    <h1>🌿 精油世界地圖與資料庫 🌿</h1>
+    
+    <div class="search-container">
+        <input type="text" id="oil-search" placeholder="🔍 搜尋精油名稱 (例如: 茶樹, 薰衣草)...">
+        <button onclick="searchOil()">搜尋</button>
+    </div>
+
     <div id="map"></div>
 
     <div class="filter-controls" id="filter-controls">
@@ -51,6 +64,11 @@
         map = L.map('map').setView([20, 0], 2);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; CartoDB' }).addTo(map);
 
+        // 綁定 Enter 鍵觸發搜尋
+        document.getElementById('oil-search').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') searchOil();
+        });
+
         try {
             const res = await fetch('data.json');
             AROMA_DATA = await res.json();
@@ -59,7 +77,7 @@
             renderB(AROMA_DATA.BLENDS_LIBRARY);
             generateSystemFilters();
         } catch (error) {
-            console.error("載入 JSON 失敗，請檢查 data.json 是否有語法錯誤:", error);
+            console.error("載入 JSON 失敗:", error);
             alert("資料庫載入失敗，請確保 data.json 格式正確無誤。");
         }
     };
@@ -67,15 +85,17 @@
     function renderMapMarkers(oilDb) {
         for (const [name, info] of Object.entries(oilDb)) {
             if (info.lat && info.lng) {
-                const marker = L.circleMarker([info.lat, info.lng], { radius: 7, fillColor: '#0ea5e9', color: '#fff', weight: 2, fillOpacity: 0.9 }).addTo(map);
+                // 【修復重疊】加入微小的隨機偏移 (Jitter)，讓同座標的精油散開成小聚落
+                const jitterLat = info.lat + (Math.random() - 0.5) * 1.5;
+                const jitterLng = info.lng + (Math.random() - 0.5) * 1.5;
+
+                const marker = L.circleMarker([jitterLat, jitterLng], { radius: 7, fillColor: '#0ea5e9', color: '#fff', weight: 2, fillOpacity: 0.9 }).addTo(map);
                 markers[name] = marker;
 
-                // 防呆處理：有化合物陣列就顯示標籤，沒有就顯示無
                 const compHtml = (info.compounds && Array.isArray(info.compounds)) 
                     ? info.compounds.map(c => `<span class="tag">${c}</span>`).join('') 
                     : '<span class="tag" style="background:#f1f5f9; color:#94a3b8; border:none;">暫無紀錄</span>';
                 
-                // 防呆處理：支援新版 functions 陣列 或 舊版 function 字串
                 const funcHtml = (info.functions && Array.isArray(info.functions)) 
                     ? info.functions.map(f => `<li>${f}</li>`).join('') 
                     : `<li>${info.function || '暫無紀錄'}</li>`;
@@ -86,21 +106,17 @@
                         <div style="font-size:11px; margin-bottom:8px; color:#64748b;">
                             🌿 ${info.family || '未知'} | 📍 ${info.origin || '未知'}
                         </div>
-                        
                         <div style="margin-bottom:8px;">
                             <strong style="font-size:12px;">化學結構:</strong><br>${compHtml}
                         </div>
-                        
                         <div style="margin-bottom:8px;">
                             <strong style="font-size:12px;">療癒機制:</strong>
                             <p style="margin:2px 0; font-size:11px; color:#334;">${info.mechanism || '（請參考下方適應症）'}</p>
                         </div>
-                        
                         <div style="margin-bottom:8px;">
                             <strong style="font-size:12px;">主要適應症:</strong>
                             <ul style="padding-left:18px; margin:2px 0; font-size:11px;">${funcHtml}</ul>
                         </div>
-                        
                         <button onclick="filterBlendsByOil('${name}')" style="width:100%; cursor:pointer; background:var(--primary); color:white; border:none; padding:6px; border-radius:4px; margin-top:5px;">查看相關配方</button>
                     </div>
                 `);
@@ -116,7 +132,6 @@
                 const name = o.n.split(' ')[0];
                 const info = AROMA_DATA.OIL_DATABASE[name] || {};
                 
-                // 自動轉換陣列為文字，若無則降級為舊字串
                 let funcDisplay = "未知";
                 if (info.functions && Array.isArray(info.functions)) {
                     funcDisplay = info.functions.join('、');
@@ -150,6 +165,26 @@
         if(countEl) countEl.textContent = `共 ${rows.length} 個配方`;
     }
 
+    // 搜尋功能邏輯
+    function searchOil() {
+        const query = document.getElementById('oil-search').value.trim();
+        if (!query) return resetFilter();
+
+        // 1. 過濾下方配方 (包含精油名 或 配方名的都會留下來)
+        const filteredBlends = AROMA_DATA.BLENDS_LIBRARY.filter(b => 
+            b.name.includes(query) || b.oils.some(o => o.n.includes(query))
+        );
+        renderB(filteredBlends);
+
+        // 2. 尋找地圖上的精油並彈出資訊
+        const matchedKey = Object.keys(AROMA_DATA.OIL_DATABASE).find(k => k.includes(query));
+        if (matchedKey && markers[matchedKey]) {
+            map.setView(markers[matchedKey].getLatLng(), 5);
+            markers[matchedKey].openPopup();
+            document.getElementById('map').scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     function generateSystemFilters() {
         const container = document.getElementById('filter-controls');
         container.innerHTML = `
@@ -178,7 +213,11 @@
 
     function filterBlendsByOil(name) { renderB(AROMA_DATA.BLENDS_LIBRARY.filter(b => b.oils.some(o => o.n.includes(name)))); }
     function filterBySystem(sys) { renderB(AROMA_DATA.BLENDS_LIBRARY.filter(b => b.sys === sys)); }
-    function resetFilter() { renderB(AROMA_DATA.BLENDS_LIBRARY); }
+    
+    function resetFilter() { 
+        document.getElementById('oil-search').value = '';
+        renderB(AROMA_DATA.BLENDS_LIBRARY); 
+    }
     
     function toggleStudyMode() { 
         document.querySelectorAll('.blend-info, .blend-note').forEach(el => {
