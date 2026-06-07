@@ -129,3 +129,1471 @@
     "芳枸葉": { "family": "桃金孃科", "origin": "澳洲", "type": "灌木", "function": "廣譜抗感染、平衡神經、冬季免疫保養" },
     "暹羅木": { "family": "柏科", "origin": "越南", "type": "樹木", "function": "抗炎、男性生殖保養、神經安撫" }
   }
+"BLENDS_LIBRARY": [
+    {
+      "name": "軟骨疼痛",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "熏陸香 Pistacia lentiscus", "p": "2%" },
+        { "n": "粉紅胡椒 Schinus molle", "p": "3%" },
+        { "n": "黑種草油 Nigella sativa", "p": "95% (基礎油)" }
+      ],
+      "note": "局部塗抹於患處"
+    },
+    {
+      "name": "關節病變（類風濕）",
+      "sys": "骨關節",
+      "routes": ["皮膚", "口服"],
+      "oils": [
+        { "n": "熏陸香 Pistacia lentiscus", "p": "70%" },
+        { "n": "冬季百里香 CT對傘花烴", "p": "30%" },
+        { "n": "石栗 Aleurites moluccana", "p": "90–95% (基礎油)" }
+      ],
+      "note": "5–10% to base oil；可口服配合"
+    },
+    {
+      "name": "骨關節炎/風濕疼痛",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "粉紅胡椒 Schinus molle", "p": "70%" },
+        { "n": "歐洲赤松 Pinus sylvestris", "p": "30%" },
+        { "n": "石栗 Aleurites moluccana", "p": "90–95% (基礎油)" }
+      ],
+      "note": "5–10% to base oil；可純油使用不超過10滴"
+    },
+    {
+      "name": "強效關節止痛（手指/膝蓋）",
+      "sys": "骨關節",
+      "routes": ["皮膚", "口服"],
+      "oils": [
+        { "n": "粉紅胡椒 Schinus molle", "p": "5%" },
+        { "n": "亞馬遜乳香 CT對傘花烴", "p": "5%" },
+        { "n": "石栗 Aleurites moluccana", "p": "90% (基礎油)" }
+      ],
+      "note": "10% to base oil；靶向外周鴉片受體"
+    },
+    {
+      "name": "疼痛引起的失眠",
+      "sys": "神經系統",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "亞馬遜乳香 Protium heptaphyllum ct p-cymene", "p": "5%" },
+        { "n": "紫蘇籽 Perilla frutescens", "p": "90% (基礎油)" }
+      ],
+      "note": "調配成按摩油每天塗抹"
+    },
+    {
+      "name": "靜脈回流障礙",
+      "sys": "心血管",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "熏陸香 Pistacia lentiscus", "p": "40 drops" },
+        { "n": "長青絲柏 Cupressus sempervirens", "p": "80 drops" },
+        { "n": "意大利永久花 Helichrysum italicum", "p": "40 drops" },
+        { "n": "瓊崖海棠 Calophyllum inophyllum", "p": "90ml (基礎油)" }
+      ],
+      "note": "平躺從腳部向上塗抹，早晚各一次，持續最少三周"
+    },
+    {
+      "name": "淋巴水腫",
+      "sys": "心血管",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "熏陸香 Pistacia lentiscus", "p": "50%" },
+        { "n": "杜松 Juniperus communis", "p": "50%" },
+        { "n": "石栗 Aleurites moluccana", "p": "97% (基礎油)" }
+      ],
+      "note": "3% to base oil；調配成按摩油每天塗抹"
+    },
+    {
+      "name": "痔瘡（內外痔）",
+      "sys": "心血管",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "熏陸香 Pistacia lentiscus", "p": "1g" },
+        { "n": "長青絲柏 Cupressus sempervirens", "p": "1g" },
+        { "n": "瓊崖海棠 Calophyllum inophyllum", "p": "1g" },
+        { "n": "牛油果 Persea americana", "p": "30g (基礎油)" }
+      ],
+      "note": "每次榛子大小劑量，局部使用，每天2次，持續1–2周"
+    },
+    {
+      "name": "前列腺充血",
+      "sys": "泌尿生殖",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "格陵蘭喇叭茶 Rhododendron groenlandicum", "p": "20%" },
+        { "n": "熏陸香 Pistacia lentiscus", "p": "20%" },
+        { "n": "長青絲柏 Cupressus sempervirens", "p": "20%" },
+        { "n": "胡椒薄荷 Mentha piperita", "p": "20%" },
+        { "n": "紫蘇 Perilla frutescens", "p": "20%" }
+      ],
+      "note": "5% to base oil"
+    },
+    {
+      "name": "支氣管炎咳嗽",
+      "sys": "呼吸系統",
+      "routes": ["皮膚", "口服"],
+      "oils": [
+        { "n": "歐洲冷杉 Abies alba", "p": "25%" },
+        { "n": "阿拉伯乳香 Boswellia sacra", "p": "25%" },
+        { "n": "粉紅胡椒 Schinus molle（有痰）", "p": "25%" },
+        { "n": "長青絲柏 Cupressus sempervirens", "p": "25%" }
+      ],
+      "note": "皮膚：5% to base oil；口服：調配成5%蜂蜜糖漿"
+    },
+    {
+      "name": "急性/慢性支氣管炎（吸聞）",
+      "sys": "呼吸系統",
+      "routes": ["吸聞", "皮膚"],
+      "oils": [
+        { "n": "歐洲冷杉 Abies alba", "p": "10%" },
+        { "n": "紫蘇籽 Perilla frutescens", "p": "90% (基礎油)" }
+      ],
+      "note": "皮膚：調配成按摩油；吸聞：純油直接使用"
+    },
+    {
+      "name": "抗卡他－控制炎症",
+      "sys": "呼吸系統",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "長青絲柏 Cupressus sempervirens", "p": "33%" },
+        { "n": "歐洲赤松 Pinus sylvestris", "p": "33%" },
+        { "n": "月桂 Laurus nobilis", "p": "33%" }
+      ],
+      "note": "用擴香儀或吸聞棒"
+    },
+    {
+      "name": "哮喘",
+      "sys": "呼吸系統",
+      "routes": ["口服", "皮膚"],
+      "oils": [
+        { "n": "歐洲赤松 Pinus sylvestris", "p": "2.5%" },
+        { "n": "摩洛哥藍艾菊 Tanacetum annuum", "p": "2.5%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "哮喘發作期間千萬不要使用吸聞方式"
+    },
+    {
+      "name": "病毒性鼻炎/鼻咽炎",
+      "sys": "呼吸系統",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "膠冷杉 Abies balsamea", "p": "25%" },
+        { "n": "苦沒藥 Commiphora myrrha", "p": "25%" },
+        { "n": "薑 Zingiber officinale", "p": "25%" },
+        { "n": "史泰格尤加利 Eucalyptus staigeriana", "p": "25%" }
+      ],
+      "note": "1:1:1:1 混合擴香或吸聞"
+    },
+    {
+      "name": "疲倦虛弱（激勵腎上腺軸）",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "歐洲赤松 Pinus sylvestris", "p": "5–10 drops" },
+        { "n": "黑雲杉 Picea mariana", "p": "5–10 drops" }
+      ],
+      "note": "純精油塗抹於腰背部，成人10滴"
+    },
+    {
+      "name": "消化不良",
+      "sys": "消化系統",
+      "routes": ["口服", "皮膚"],
+      "oils": [
+        { "n": "甜橙 Citrus sinensis", "p": "1–2滴" },
+        { "n": "黑種草 Nigella sativa", "p": "95% (基礎油)" }
+      ],
+      "note": "每5–10分鐘重複，不超過3次，每次不超過2滴"
+    },
+    {
+      "name": "胃食道逆流",
+      "sys": "消化系統",
+      "routes": ["口服", "皮膚"],
+      "oils": [
+        { "n": "甜橙 Citrus sinensis", "p": "20 drops" },
+        { "n": "苦橙 Citrus aurantium", "p": "10 drops" },
+        { "n": "日本柚子 Citrus junos", "p": "10 drops" },
+        { "n": "亞麻薺油 Camelina sativa", "p": "50ml (基礎油)" }
+      ],
+      "note": "3天後32%改善，14天後85%症狀消失"
+    },
+    {
+      "name": "焦慮與抑鬱（情緒）",
+      "sys": "神經系統",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "甜橙 Citrus sinensis", "p": "5–10 drops 100%" }
+      ],
+      "note": "純精油擴香或吸聞"
+    },
+    {
+      "name": "高血壓",
+      "sys": "心血管",
+      "routes": ["吸聞", "口服"],
+      "oils": [
+        { "n": "日本柚子 Citrus junos", "p": "1滴" },
+        { "n": "香蜂草 Melissa officinalis", "p": "1滴" }
+      ],
+      "note": "舌下含服2–3次/天；馬上降低血壓，15–20分鐘內"
+    },
+    {
+      "name": "緩解壓力",
+      "sys": "神經系統",
+      "routes": ["口服", "皮膚"],
+      "oils": [
+        { "n": "日本柚子 Citrus junos", "p": "1滴" },
+        { "n": "亞麻薺油 Camelina sativa", "p": "50ml (基礎油)" }
+      ],
+      "note": "舌下含服或皮膚塗抹"
+    },
+    {
+      "name": "抗焦慮/壓力性失眠",
+      "sys": "神經系統",
+      "routes": ["吸聞", "皮膚"],
+      "oils": [
+        { "n": "阿拉伯乳香 Boswellia sacra", "p": "25%" },
+        { "n": "羅馬洋甘菊 Chamaemelum nobile", "p": "25%" },
+        { "n": "薰衣草 Lavandula angustifolia", "p": "25%" },
+        { "n": "香蜂草 Melissa officinalis", "p": "25%" }
+      ],
+      "note": "3% to base oil；可1:1:1:1 混合擴香"
+    },
+    {
+      "name": "激勵神經元/阿茲海默症",
+      "sys": "神經系統",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "阿拉伯乳香 Boswellia sacra", "p": "5 drops" },
+        { "n": "檸檬 Citrus limon", "p": "10 drops" },
+        { "n": "薰衣草 Lavandula angustifolia", "p": "8 drops" },
+        { "n": "迷迭香 ct 1.8 cineole", "p": "10 drops" }
+      ],
+      "note": "滴在吸聞棒棉條，每天深呼吸吸聞三次"
+    },
+    {
+      "name": "抗腫瘤（前列腺癌）",
+      "sys": "抗腫瘤",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "熏陸香 Pistacia lentiscus", "p": "33%" },
+        { "n": "長青絲柏 Cupressus sempervirens", "p": "33%" },
+        { "n": "綠香桃木 Myrtus communis ct 1.8 cineole", "p": "33%" },
+        { "n": "水飛薊籽 Carthamus tinctorius", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；調配成按摩油每天塗抹"
+    },
+    {
+      "name": "抗腫瘤（前列腺癌 ＋ Ledum）",
+      "sys": "抗腫瘤",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "熏陸香 Pistacia lentiscus", "p": "25%" },
+        { "n": "長青絲柏 Cupressus sempervirens", "p": "25%" },
+        { "n": "綠香桃木 Myrtus communis ct 1.8 cineole", "p": "25%" },
+        { "n": "格陵蘭喇叭茶 Rhododendron groenlandicum", "p": "25%" },
+        { "n": "水飛薊籽 Carthamus tinctorius", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil"
+    },
+    {
+      "name": "肝臟排毒（肝敷包）",
+      "sys": "肝臟",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "格陵蘭喇叭茶 Rhododendron groenlandicum", "p": "20%" },
+        { "n": "胡蘿蔔籽 Daucus carota", "p": "20%" },
+        { "n": "義大利永久花 Helichrysum italicum", "p": "20%" },
+        { "n": "檸檬 Citrus limon", "p": "20%" },
+        { "n": "馬鞭草酮迷迭香 Rosmarinus ct verbenone", "p": "20%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "熱敷於右側肝臟區域 30–45 分鐘"
+    },
+    {
+      "name": "肝炎",
+      "sys": "肝臟",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "格陵蘭喇叭茶 Rhododendron groenlandicum", "p": "1%" },
+        { "n": "胡蘿蔔籽 Daucus carota", "p": "1%" },
+        { "n": "義大利永久花 Helichrysum italicum", "p": "1%" },
+        { "n": "月桂 Laurus nobilis", "p": "1%" },
+        { "n": "綠花白千層 Melaleuca quinquenervia", "p": "0.5%" },
+        { "n": "側柏醇CT百里香 Thymus vulgaris ct thyjanol", "p": "0.5%" }
+      ],
+      "note": "調配成按摩油每天塗抹"
+    },
+    {
+      "name": "COVID-19 預防（TH1）",
+      "sys": "免疫",
+      "routes": ["皮膚", "吸聞"],
+      "oils": [
+        { "n": "粉紅胡椒 Schinus molle", "p": "50%" },
+        { "n": "番石榴葉 Psidium guajava", "p": "25%" },
+        { "n": "古巴香脂 Copaifera officinalis", "p": "25%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95–97% (基礎油)" }
+      ],
+      "note": "3–5% to base oil；靶向TH1路徑，抗病毒免疫機制"
+    },
+    {
+      "name": "預防妊娠紋",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "阿拉伯乳香 Boswellia sacra", "p": "33%" },
+        { "n": "綠橘 Citrus reticulata", "p": "33%" },
+        { "n": "義大利永久花 Helichrysum italicum", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "99% (基礎油)" }
+      ],
+      "note": "1% to base oil；每天只用一次，孕婦盡量少用精油"
+    },
+    {
+      "name": "美容抗皺/抑制皮脂",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "阿拉伯乳香 Boswellia sacra", "p": "0.3%" },
+        { "n": "羅馬洋甘菊 Chamaemelum nobile", "p": "0.2%" },
+        { "n": "石栗 Aleurites moluccana", "p": "99.5% (基礎油)" }
+      ],
+      "note": "乳香靶向膠原蛋白1；羅馬洋甘菊靶向膠原蛋白3"
+    },
+    {
+      "name": "淡斑",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "海茴香 Crithmum maritimum", "p": "2 drops" },
+        { "n": "胡蘿蔔籽 Daucus carota", "p": "2 drops" },
+        { "n": "乳香 Boswellia carterii", "p": "1 drop" },
+        { "n": "煥顏草/馬達加斯加豆蔻", "p": "1 drop" },
+        { "n": "玫瑰果油 Rosa canina", "p": "10ml (基礎油)" }
+      ],
+      "note": "含γ-萜品烯，抑制酪氨酸酶"
+    },
+    {
+      "name": "關節養護",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "歐洲冷杉 Abies alba", "p": "5 drops" },
+        { "n": "長青絲柏 Cupressus sempervirens", "p": "5 drops" },
+        { "n": "薑 Zingiber officinale", "p": "2 drops" },
+        { "n": "黑種草 Nigella sativa", "p": "10ml (基礎油)" }
+      ],
+      "note": "早中晚三次塗抹"
+    },
+    {
+      "name": "子宮內膜異位症",
+      "sys": "泌尿生殖",
+      "routes": ["皮膚", "口服"],
+      "oils": [
+        { "n": "龍艾 Artemisia dracunculus", "p": "6–10 drops" },
+        { "n": "瓊崖海棠 Calophyllum inophyllum", "p": "6–10 drops (基礎油)" },
+        { "n": "粉紅胡椒 Schinus molle 或 假肉荳蔻", "p": "（口服，任選其一）" }
+      ],
+      "note": "持續3周後暫停1周；口服滴入中性藥片，一天2–3次"
+    },
+    {
+      "name": "NSAID 抗炎症（吸聞）",
+      "sys": "骨關節",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "古巴香脂 Copaifera officinalis", "p": "33%" },
+        { "n": "黑胡椒 Piper nigrum", "p": "33%" },
+        { "n": "卡塔菲葉 Cedrelopsis grevei", "p": "33%" }
+      ],
+      "note": "番石榴葉 Psidium guajava 可替換其中一款；擴香或吸聞棒"
+    },
+    {
+      "name": "病毒性支氣管炎",
+      "sys": "呼吸系統",
+      "routes": ["吸聞", "皮膚"],
+      "oils": [
+        { "n": "古巴香脂 Copaifera officinalis", "p": "33%" },
+        { "n": "藍膠尤加利 Eucalyptus globulus", "p": "33%" },
+        { "n": "史泰格尤加利 Eucalyptus staigeriana", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；季節性流感、呼吸道合包病毒、鼻病毒"
+    },
+    {
+      "name": "病毒性皮膚感染",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "古巴香脂 Copaifera officinalis", "p": "33%" },
+        { "n": "波旁玫瑰天竺葵 Pelargonium graveolens", "p": "33%" },
+        { "n": "松紅梅 Leptospermum scoparium", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；帶狀皰疹、水痘、傳染性軟疣、疣、麻疹、手足口病"
+    },
+    {
+      "name": "免疫激勵：靶向NK細胞",
+      "sys": "免疫",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "古巴香脂 Copaifera officinalis", "p": "25%" },
+        { "n": "黑胡椒 Piper nigrum", "p": "25%" },
+        { "n": "番石榴葉 Psidium guajava", "p": "25%" },
+        { "n": "真正薰衣草 Lavandula angustifolia", "p": "12.5%" },
+        { "n": "依蘭依蘭 Cananga odorata", "p": "12.5%" }
+      ],
+      "note": "擴香或吸聞棒；啟動TH1路徑"
+    },
+    {
+      "name": "肌腱勞損、疼痛",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "古巴香脂 Copaifera officinalis", "p": "33%" },
+        { "n": "檸檬尤加利 Corymbia citriodora", "p": "33%" },
+        { "n": "山雞椒 Litsea cubeba", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；調配成按摩油每天塗抹"
+    },
+    {
+      "name": "癌症轉移之強烈疼痛",
+      "sys": "抗腫瘤",
+      "routes": ["吸聞", "皮膚"],
+      "oils": [
+        { "n": "古巴香脂 Copaifera officinalis", "p": "25%" },
+        { "n": "黑胡椒 Piper nigrum", "p": "25%" },
+        { "n": "番石榴葉 Psidium guajava", "p": "25%" },
+        { "n": "依蘭依蘭 Cananga odorata f. odorata", "p": "25%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；對阿片藥物效益不佳時可助鎮痛"
+    },
+    {
+      "name": "濕疹紅斑",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "摩洛哥藍艾菊 Tanacetum annuum", "p": "50%" },
+        { "n": "香子蘭菊 Vanillosmopsis erythropappa", "p": "50%" },
+        { "n": "石栗 Aleurites moluccana", "p": "97% (基礎油)" }
+      ],
+      "note": "3% to base oil；調配成按摩油每天塗抹"
+    },
+    {
+      "name": "兒童濕疹",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "印度乳香CO2 Boswellia serrata", "p": "25%" },
+        { "n": "摩洛哥藍艾菊 Tanacetum annuum", "p": "25%" },
+        { "n": "白檀 Santalum album", "p": "25%" },
+        { "n": "茶樹 Melaleuca alternifolia", "p": "25%" },
+        { "n": "沙棘果油 Hippophae rhamnoides", "p": "97% (基礎油)" }
+      ],
+      "note": "3% to base oil；使用抗炎功效的基礎油"
+    },
+    {
+      "name": "過敏性哮喘",
+      "sys": "呼吸系統",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "摩洛哥藍艾菊 Tanacetum annuum", "p": "33%" },
+        { "n": "香子蘭菊 Vanillosmopsis erythropappa", "p": "33%" },
+        { "n": "黑種草 Nigella sativa", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "97% (基礎油)" }
+      ],
+      "note": "3% to base oil；直腸給藥：每次30mg約1滴"
+    },
+    {
+      "name": "下呼吸道感染",
+      "sys": "呼吸系統",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "阿密茴 Ammi visnaga", "p": "33%" },
+        { "n": "摩洛哥藍艾菊 Tanacetum annuum", "p": "33%" },
+        { "n": "香子蘭菊 Vanillosmopsis erythropappa", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "97% (基礎油)" }
+      ],
+      "note": "3% to base oil；直腸給藥：每次30mg約1滴"
+    },
+    {
+      "name": "高血壓（依蘭薰衣草）",
+      "sys": "心血管",
+      "routes": ["吸聞", "皮膚"],
+      "oils": [
+        { "n": "依蘭依蘭 Cananga odorata", "p": "50%" },
+        { "n": "薰衣草 Lavandula angustifolia", "p": "50%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；研究顯示吸入YYA可顯著降低收縮壓和舒張壓"
+    },
+    {
+      "name": "產後高血壓",
+      "sys": "心血管",
+      "routes": ["吸聞", "皮膚"],
+      "oils": [
+        { "n": "依蘭依蘭 Cananga odorata", "p": "50%" },
+        { "n": "馬鬱蘭 Origanum majorana", "p": "50%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil"
+    },
+    {
+      "name": "高血壓（依蘭一枝黃花）",
+      "sys": "心血管",
+      "routes": ["吸聞", "皮膚"],
+      "oils": [
+        { "n": "依蘭依蘭 Cananga odorata", "p": "50%" },
+        { "n": "加拿大一枝黃花 Solidago canadensis", "p": "50%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil"
+    },
+    {
+      "name": "冠狀動脈炎",
+      "sys": "心血管",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "熏陸香 Pistacia lentiscus", "p": "50%" },
+        { "n": "加拿大一枝黃花 Solidago canadensis", "p": "50%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil"
+    },
+    {
+      "name": "調理乳腺",
+      "sys": "抗腫瘤",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "加拿大一枝黃花 Solidago canadensis", "p": "2 drops" },
+        { "n": "義大利永久花 Helichrysum italicum", "p": "2 drops" },
+        { "n": "乳香 Boswellia carterii", "p": "2 drops" },
+        { "n": "沒藥 Commiphora myrrha", "p": "2 drops" },
+        { "n": "石栗 Aleurites moluccana", "p": "10ml (基礎油)" }
+      ],
+      "note": "調配成按摩油每天塗抹"
+    },
+    {
+      "name": "緩解肝臟負擔、淨化肝臟",
+      "sys": "肝臟",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "加拿大一枝黃花 Solidago canadensis", "p": "2 drops" },
+        { "n": "胡蘿蔔籽 Daucus carota", "p": "1 drop" },
+        { "n": "檸檬 Citrus limon", "p": "3 drops" },
+        { "n": "馬鞭草酮迷迭香 Rosmarinus ct verbenone", "p": "2 drops" },
+        { "n": "石栗 Aleurites moluccana", "p": "10ml (基礎油)" }
+      ],
+      "note": "調配成按摩油每天塗抹"
+    },
+    {
+      "name": "提升免疫力：靶向NK細胞（皮膚/口服）",
+      "sys": "免疫",
+      "routes": ["皮膚", "口服"],
+      "oils": [
+        { "n": "古巴香脂 Copaifera officinalis（β-石竹烯）", "p": "25%" },
+        { "n": "番石榴葉 Psidium guava（β-石竹烯）", "p": "25%" },
+        { "n": "依蘭依蘭2/3型 Cananga odorata（β石竹烯）", "p": "25%" },
+        { "n": "粉紅胡椒 Schinus molle（(+)-α-水茴香萜）", "p": "25%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；COVID-19口服：預防每次1–2滴，每天2–3次；治療每次1–2滴，每天5–6次"
+    },
+    {
+      "name": "緩解背部僵硬",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "冬青 Gaultheria procumbens", "p": "60 drops" },
+        { "n": "苦橙葉 Citrus aurantium", "p": "40 drops" },
+        { "n": "檸檬尤加利 Corymbia citriodora", "p": "35 drops" },
+        { "n": "依蘭依蘭 Cananga odorata", "p": "15 drops" },
+        { "n": "山金車 Arnica montana", "p": "5ml" },
+        { "n": "瓊崖海棠 Calophyllum inophyllum", "p": "10ml (基礎油)" }
+      ],
+      "note": "取6滴深度按摩腰部；每天最多4次連續5天；禁：口服抗凝劑患者、血友病、阿司匹林過敏、孕婦、12歲以下兒童"
+    },
+    {
+      "name": "女性防脫髮",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "依蘭依蘭 Cananga odorata", "p": "30 drops" },
+        { "n": "紅香桃木 Myrtus communis", "p": "60 drops" },
+        { "n": "玫瑰天竺葵 Pelargonium graveolens", "p": "30 drops" },
+        { "n": "快樂鼠尾草 Salvia sclarea", "p": "30 drops" },
+        { "n": "蓖麻 Ricinus communis", "p": "10ml" },
+        { "n": "荷荷巴 Simmondsia chinensis", "p": "60ml (基礎油)" }
+      ],
+      "note": "每周芳香油養護；注意：有激素依賴性癌症病史者禁用快樂鼠尾草"
+    },
+    {
+      "name": "子宮肌瘤（口服）",
+      "sys": "泌尿生殖",
+      "routes": ["口服"],
+      "oils": [
+        { "n": "貞潔樹 Vitex agnus-castus", "p": "30 drops" },
+        { "n": "岩玫瑰 Cistus ladaniferus", "p": "30 drops" },
+        { "n": "依蘭依蘭 Cananga odorata", "p": "30 drops" },
+        { "n": "橄欖油 Olea europaea", "p": "7ml (基礎油)" }
+      ],
+      "note": "早晨服用1粒芳香膠囊，每周5天，持續2個月；12歲以下、孕婦、哺乳、骨質疏鬆禁用"
+    },
+    {
+      "name": "呼吸道病毒感染（支氣管炎）",
+      "sys": "呼吸系統",
+      "routes": ["皮膚", "吸聞"],
+      "oils": [
+        { "n": "野蜂香薄荷 Monarda fistulosa", "p": "100%（單方）" }
+      ],
+      "note": "腳底塗抹1滴；上呼吸道：擴香/嗅聞；下呼吸道：皮膚按摩手腕/前手臂/腳底"
+    },
+    {
+      "name": "百日咳桿菌",
+      "sys": "呼吸系統",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "長青絲柏 Cupressus sempervirens", "p": "33%" },
+        { "n": "甜馬鬱蘭 Origanum majorana", "p": "33%" },
+        { "n": "胡椒薄荷 Mentha piperita", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；塗抹手腕/前臂/腳底（薄荷可塗腳底避免過涼）"
+    },
+    {
+      "name": "下呼吸道感染（花梨木）",
+      "sys": "呼吸系統",
+      "routes": ["皮膚", "吸聞"],
+      "oils": [
+        { "n": "花梨木 Aniba rosaeodora", "p": "1份" },
+        { "n": "藍膠尤加利 Eucalyptus globulus", "p": "1份" },
+        { "n": "歐洲赤松 Pinus sylvestris", "p": "1份" }
+      ],
+      "note": "重症可直腸給藥：依體重5mg/kg（1滴≈30mg）"
+    },
+    {
+      "name": "鼻咽感染-鼻竇炎",
+      "sys": "呼吸系統",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "茶樹 Melaleuca alternifolia", "p": "1份" },
+        { "n": "綠花白千層 Melaleuca quinquenervia", "p": "1份" },
+        { "n": "莎羅白樟 Cinnamosma fragrans", "p": "1份" },
+        { "n": "古巴香脂膏 Copaifera officinalis", "p": "30ml (基礎油)" }
+      ],
+      "note": "塗抹囟門/頸部1–4滴，額竇疼痛可塗眉毛上方；發作期每天4次，預防每天2次"
+    },
+    {
+      "name": "鼻炎（薄荷+粉紅胡椒）",
+      "sys": "呼吸系統",
+      "routes": ["口服", "吸聞"],
+      "oils": [
+        { "n": "胡椒薄荷 Mentha piperita", "p": "1滴" },
+        { "n": "粉紅胡椒 Schinus molle", "p": "1滴" }
+      ],
+      "note": "1–2滴與中性藥片，舌下含服；或擴香/嗅聞"
+    },
+    {
+      "name": "念珠菌感染（野蜂香薄荷+茶樹）",
+      "sys": "泌尿生殖",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "野蜂香薄荷 Monarda fistulosa", "p": "50%" },
+        { "n": "茶樹 Melaleuca alternifolia", "p": "50%" },
+        { "n": "植物油", "p": "5ml (基礎油)" }
+      ],
+      "note": "陰道給藥：將5滴複方精油加入5ml植物油，生理棉條浸入吸收，再進行陰道栓塞"
+    },
+    {
+      "name": "念珠菌感染（三油配方）",
+      "sys": "泌尿生殖",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "野蜂香薄荷 Monarda fistulosa（香葉醇）", "p": "1份" },
+        { "n": "茶樹 Melaleuca alternifolia（萜品烯四醇）", "p": "1份" },
+        { "n": "山雞椒 Litsea cubeba（檸檬醛）", "p": "1份" },
+        { "n": "植物油", "p": "5ml (基礎油)" }
+      ],
+      "note": "陰道給藥：5滴+5ml植物油，棉條浸入"
+    },
+    {
+      "name": "尿道感染/復發性膀胱炎（七天療程）",
+      "sys": "泌尿生殖",
+      "routes": ["口服"],
+      "oils": [
+        { "n": "錫蘭肉桂皮 Cinnamomum verum（第1天）", "p": "2滴/次，最多12次" },
+        { "n": "百里酚百里香 Thymus zygis ct thymol（第2–3天）", "p": "8–10次/天" },
+        { "n": "野蜂香薄荷 Monarda fistulosa（第4–7天）", "p": "每天3次遞減" }
+      ],
+      "note": "口服：每次2滴於中性藥片8–12片/天；必須完整七天療程"
+    },
+    {
+      "name": "抑制陰道分泌物",
+      "sys": "泌尿生殖",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "茶樹 Melaleuca alternifolia", "p": "1份" },
+        { "n": "羅馬洋甘菊 Chamaemelum nobile", "p": "1份" },
+        { "n": "天竺葵 Pelargonium graveolens", "p": "1份" },
+        { "n": "植物油", "p": "5ml (基礎油)" }
+      ],
+      "note": "陰道給藥：5滴+5ml植物油，棉條浸入"
+    },
+    {
+      "name": "助產（分娩時使用）",
+      "sys": "泌尿生殖",
+      "routes": ["口服"],
+      "oils": [
+        { "n": "野蜂香薄荷 Monarda fistulosa", "p": "1滴" },
+        { "n": "方糖", "p": "1顆" }
+      ],
+      "note": "方糖+1滴野蜂香薄荷口服，可重複2–3次"
+    },
+    {
+      "name": "COVID-19初期處理（ACE2受體）",
+      "sys": "免疫",
+      "routes": ["吸聞", "口服"],
+      "oils": [
+        { "n": "野蜂香薄荷 Monarda fistulosa", "p": "50%" },
+        { "n": "天竺葵 Pelargonium graveolens", "p": "50%" }
+      ],
+      "note": "患病第1–2天使用；亦可預防COVID-19；吸聞+口服"
+    },
+    {
+      "name": "COVID-19抑制炎症（第3天起）",
+      "sys": "免疫",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "天竺葵 Pelargonium graveolens", "p": "50%" },
+        { "n": "野蜂香薄荷 Monarda fistulosa", "p": "50%" },
+        { "n": "紫蘇籽 Perilla frutescens", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；配合：熏陸香33%+月桂33%+藍膠尤加利33%（抗炎第二階段）"
+    },
+    {
+      "name": "免疫激勵（茶樹+馬鬱蘭）",
+      "sys": "免疫",
+      "routes": ["皮膚", "吸聞"],
+      "oils": [
+        { "n": "茶樹 Melaleuca alternifolia", "p": "50%" },
+        { "n": "馬鬱蘭 Origanum majorana", "p": "50%" },
+        { "n": "任何植物油", "p": "95% (基礎油)" }
+      ],
+      "note": "激勵Th1型免疫應答和B細胞；皮膚塗抹或擴香/吸聞"
+    },
+    {
+      "name": "金黃葡萄球菌/MRSA（分階段）",
+      "sys": "免疫",
+      "routes": ["口服", "皮膚"],
+      "oils": [
+        { "n": "錫蘭肉桂皮 Cinnamomum verum（第1天）", "p": "↑中性粒細胞PN" },
+        { "n": "百里酚百里香 Thymus zygis ct thymol（第2–3天）", "p": "激勵Th17" },
+        { "n": "野蜂香薄荷 Monarda fistulosa（第3–7天）", "p": "激勵Th17" },
+        { "n": "茶樹 Melaleuca alternifolia（全期）", "p": "針對MRSA，皮膚塗抹" }
+      ],
+      "note": "革蘭氏陽性→細胞外細菌→激勵中性粒細胞PN→激勵Th17路徑"
+    },
+    {
+      "name": "發疹性發燒（風疹/麻疹）",
+      "sys": "免疫",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "野蜂香薄荷 Monarda fistulosa", "p": "33%" },
+        { "n": "天竺葵 Pelargonium graveolens", "p": "33%" },
+        { "n": "玫瑰草 Cymbopogon martini", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；調配成按摩油每天塗抹"
+    },
+    {
+      "name": "抗寄生蟲：異尖線蟲病",
+      "sys": "免疫",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "野蜂香薄荷 Monarda fistulosa", "p": "33%" },
+        { "n": "沉香醇百里香 Thymus vulgaris ct linalool", "p": "33%" },
+        { "n": "芫荽籽 Coriandrum sativum", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；調配成按摩油每天塗抹"
+    },
+    {
+      "name": "抗真菌（香港腳/主婦手）",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "茶樹 Melaleuca alternifolia", "p": "70 drops" },
+        { "n": "玫瑰天竺葵 Pelargonium graveolens", "p": "60 drops" },
+        { "n": "丁香花苞 Syzygium aromaticum", "p": "30 drops" },
+        { "n": "黑種草 Nigella sativa", "p": "60ml (基礎油)" }
+      ],
+      "note": "每天2次，每次5–6滴，皮膚乾燥後使用，連續5–15天"
+    },
+    {
+      "name": "痤瘡",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "茶樹 Melaleuca alternifolia", "p": "3ml" },
+        { "n": "玫瑰天竺葵 Pelargonium graveolens", "p": "3ml" },
+        { "n": "真正薰衣草 Lavandula angustifolia", "p": "2ml" },
+        { "n": "黑種草 Nigella sativa", "p": "2ml (基礎油)" }
+      ],
+      "note": "用棉簽取1–2滴塗抹於粉刺，每天2次，最多10天；不建議孕婦哺乳期使用"
+    },
+    {
+      "name": "抗衰老（玫瑰天竺葵）",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "玫瑰天竺葵 Pelargonium graveolens", "p": "3滴" },
+        { "n": "岩玫瑰 Cistus ladaniferus", "p": "1滴" },
+        { "n": "玫瑰果 Rosa canina", "p": "40ml (基礎油)" },
+        { "n": "胡蘿蔔 Daucus carota", "p": "3ml (基礎油)" }
+      ],
+      "note": "早晚各塗3–4滴於面部及頸部，輕柔按摩"
+    },
+    {
+      "name": "放射性治療後皮膚灼傷（乳腺癌）",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "茶樹 Melaleuca alternifolia", "p": "50%" },
+        { "n": "綠花白千層 Melaleuca quinquenervia", "p": "50%" },
+        { "n": "任何植物油", "p": "95% (基礎油)" }
+      ],
+      "note": "預防灼傷/皮膚硬化；皮膚塗抹"
+    },
+    {
+      "name": "牙齦炎（油拔法）",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "茶樹 Melaleuca alternifolia", "p": "1份" },
+        { "n": "澳洲尤加利 Eucalyptus radiata", "p": "1份" },
+        { "n": "松紅梅 Leptospermum scoparium", "p": "1份" },
+        { "n": "椰子油 Cocos nucifera", "p": "97% (基礎油)" }
+      ],
+      "note": "混合後每天早上漱口後吐出（油拔法）"
+    },
+    {
+      "name": "美肌（所有皮膚類型）",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "波旁天竺葵 Pelargonium graveolens", "p": "3滴" },
+        { "n": "羅馬洋甘菊 Anthemis nobilis", "p": "2滴" },
+        { "n": "大馬士革玫瑰 Rosa damascena", "p": "2滴" },
+        { "n": "玫瑰果 Rosa canina", "p": "9ml (基礎油)" },
+        { "n": "胡蘿蔔 Daucus carota", "p": "1ml (基礎油)" }
+      ],
+      "note": "早晚各6滴塗於清潔乾燥面部"
+    },
+    {
+      "name": "鼻腔止血",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "岩玫瑰 Cistus ladaniferus", "p": "3ml" },
+        { "n": "玫瑰天竺葵 Pelargonium graveolens", "p": "3ml" }
+      ],
+      "note": "製作棉條，滴1–2滴，深入鼻腔，血管叢很快止血"
+    },
+    {
+      "name": "油性頭髮護理",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "天竺葵 Pelargonium graveolens", "p": "20 drops" },
+        { "n": "大西洋雪松 Cedrus atlantica", "p": "20 drops" },
+        { "n": "檸檬 Citrus limon", "p": "30 drops" },
+        { "n": "洗髮水基底", "p": "100ml" },
+        { "n": "綠黏土粉", "p": "2tsp" }
+      ],
+      "note": "每3–7天使用；洗髮後3小時內勿曬太陽；6歲以下禁用"
+    },
+    {
+      "name": "硬皮病（局部）",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "香脂果豆木 Eremanthus erytropapus", "p": "1份" },
+        { "n": "岩玫瑰 Cistus ladaniferus", "p": "1份" },
+        { "n": "山雞椒 Litsea cubeba", "p": "1份" },
+        { "n": "石栗 Aleurites moluccana", "p": "97% (基礎油)" }
+      ],
+      "note": "局部皮膚塗抹"
+    },
+    {
+      "name": "偏頭痛",
+      "sys": "神經系統",
+      "routes": ["皮膚", "吸聞"],
+      "oils": [
+        { "n": "胡椒薄荷 Mentha piperita", "p": "2%" },
+        { "n": "橘葉 Citrus reticulata Petitgrain", "p": "2%" },
+        { "n": "龍艾 Artemisia dracunculus", "p": "1%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；皮膚塗抹+吸聞"
+    },
+    {
+      "name": "撞擊引起血腫（夾手等）",
+      "sys": "神經系統",
+      "routes": ["皮膚", "吸聞"],
+      "oils": [
+        { "n": "胡椒薄荷 Mentha piperita", "p": "2%" },
+        { "n": "意大利永久花 Helichrysum italicum", "p": "2%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；皮膚塗抹+吸聞"
+    },
+    {
+      "name": "鎮痛（GABA受體+阿片類受體）",
+      "sys": "神經系統",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "花梨木 Aniba rosaeodora", "p": "50%" },
+        { "n": "芫荽籽 Coriandrum sativum", "p": "50%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；局部麻醉功效，等量情況下與普羅卡因相同"
+    },
+    {
+      "name": "失眠（花梨木+檀香+雪松）",
+      "sys": "神經系統",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "花梨木 Aniba rosaeodora", "p": "33%" },
+        { "n": "檀香 Santalum album", "p": "33%" },
+        { "n": "維吉尼亞雪松 Juniperus virginiana", "p": "33%" }
+      ],
+      "note": "擴香或吸聞"
+    },
+    {
+      "name": "改善躁動興奮（抑制去甲腎上腺素）",
+      "sys": "神經系統",
+      "routes": ["吸聞", "口服"],
+      "oils": [
+        { "n": "花梨木 Aniba rosaeodora", "p": "33%" },
+        { "n": "羅馬洋甘菊 Chamaemelum nobile", "p": "33%" },
+        { "n": "山雞椒 Litsea cubeba", "p": "33%" },
+        { "n": "方糖", "p": "1顆" }
+      ],
+      "note": "方糖+1滴口服；可重複2–3次；吸聞擴香"
+    },
+    {
+      "name": "腸胃炎和痙攣",
+      "sys": "消化系統",
+      "routes": ["口服"],
+      "oils": [
+        { "n": "錫蘭肉桂皮 Cinnamomum verum", "p": "30 drops" },
+        { "n": "月桂 Laurus nobilis", "p": "45 drops" },
+        { "n": "胡椒薄荷 Mentha piperita", "p": "30 drops" },
+        { "n": "任何植物油", "p": "10ml" }
+      ],
+      "note": "每天3次，每次10滴口服，連續5天"
+    },
+    {
+      "name": "咽峽炎",
+      "sys": "消化系統",
+      "routes": ["口服"],
+      "oils": [
+        { "n": "芫荽籽 Coriandrum sativum", "p": "1滴" },
+        { "n": "沉香醇百里香 Thymus vulgaris ct linalool", "p": "1滴" },
+        { "n": "任何植物油", "p": "適量" }
+      ],
+      "note": "口服，直接靶向病灶，慢慢含服後吞下（靶向菌群平衡）"
+    },
+    {
+      "name": "妊娠期感染弓形蟲",
+      "sys": "消化系統",
+      "routes": ["口服"],
+      "oils": [
+        { "n": "芫荽籽 Coriandrum sativum", "p": "2滴" },
+        { "n": "任何植物油", "p": "1–2ml" }
+      ],
+      "note": "每次2滴，每天3次，中性藥片或植物油，不建議用方糖"
+    },
+    {
+      "name": "腸道寄生蟲",
+      "sys": "消化系統",
+      "routes": ["口服", "皮膚"],
+      "oils": [
+        { "n": "芫荽籽 Coriandrum sativum", "p": "60 drops" },
+        { "n": "胡蘿蔔籽 Daucus carota", "p": "30 drops" },
+        { "n": "甜茴香 Foeniculum vulgare", "p": "10 drops" },
+        { "n": "任何植物油", "p": "適量" }
+      ],
+      "note": "口服驅蟲；小孩腹部塗抹；新月前後5天+滿月前後5天，共10天療程"
+    },
+    {
+      "name": "下肢沉重水腫",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "胡椒薄荷 Mentha piperita", "p": "45 drops" },
+        { "n": "大西洋雪松 Cedrus atlantica", "p": "90 drops" },
+        { "n": "澳洲堅果 Macadamia integrifolia", "p": "50ml (基礎油)" }
+      ],
+      "note": "夏季每天3次從腳腕按摩至膝蓋，最多每天4次"
+    },
+    {
+      "name": "抗炎（MMP基質金屬蛋白酶）",
+      "sys": "骨關節",
+      "routes": ["口服"],
+      "oils": [
+        { "n": "香脂果豆木 Eremanthus erytropapus", "p": "1份" },
+        { "n": "東印度檀香 Santalum album", "p": "1份" },
+        { "n": "廣藿香 Pogostemon cablin", "p": "1份" }
+      ],
+      "note": "口服，直接靶向病灶，慢慢含服後吞下"
+    },
+    {
+      "name": "類風濕性關節炎（下呼吸道）",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "阿密茴 Ammi visnaga", "p": "25%" },
+        { "n": "香脂果豆木 Eremanthus erytropapus", "p": "25%" },
+        { "n": "摩洛哥藍艾菊 Tanacetum annuum", "p": "25%" },
+        { "n": "巴西乳香 Protium heptaphyllum", "p": "25%" },
+        { "n": "石栗 Aleurites moluccana", "p": "97% (基礎油)" }
+      ],
+      "note": "直腸給藥：每次30mg約1滴，每日1–2次"
+    },
+    {
+      "name": "抗真菌（三油配方）",
+      "sys": "抗腫瘤",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "野蜂香薄荷 Monarda fistulosa", "p": "33%" },
+        { "n": "檸檬香桃木 Backousia citriodora", "p": "33%" },
+        { "n": "玫瑰草 Cymopogon martini", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "90% (基礎油)" }
+      ],
+      "note": "10% to base oil；調配成按摩油每天塗抹"
+    },
+    {
+      "name": "抗彈性蛋白酶（護膚抗老）",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "芫荽籽CO2 Coriandrum sativum", "p": "33%" },
+        { "n": "肉荳蔻CO2 Myristica fragrans", "p": "33%" },
+        { "n": "桂花原精 Osmanthus fragrans abs", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "99% (基礎油)" }
+      ],
+      "note": "1% to base oil；保持肌膚彈性，減少橘皮組織"
+    },
+    {
+      "name": "虎標油DIY（止痛消炎）",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "錫蘭肉桂皮 Cinnamomum verum", "p": "10 drops" },
+        { "n": "莎羅白樟 Cinnamosma fragrans", "p": "10 drops" },
+        { "n": "胡椒薄荷 Mentha piperita", "p": "5 drops" },
+        { "n": "冬青 Gaultheria fragrantissima", "p": "5 drops" },
+        { "n": "辣木籽油 Moringa oleifera", "p": "9ml (基礎油)" }
+      ],
+      "note": "10% to base oil；調配成按摩油每天塗抹"
+    },
+    {
+      "name": "經痛",
+      "sys": "泌尿生殖",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "天竺葵 Pelargonium graveolens", "p": "20 drops" },
+        { "n": "羅馬洋甘菊 Anthemis nobilis", "p": "10 drops" },
+        { "n": "苦橙葉 Citrus aurantium", "p": "10 drops" },
+        { "n": "月見草 Oenothera biennis", "p": "30ml (基礎油)" }
+      ],
+      "note": "月經來潮第15天起順時針塗抹腹部；出現疼痛時4滴+植物油塗腹，一天三次"
+    },
+    {
+      "name": "非甾體抗炎（NSAID類）",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "香子蘭菊 Vanillosmopsis erythropappa（沒藥醇）", "p": "1份" },
+        { "n": "摩洛哥藍艾菊 Tanacetum annuum（母菊天藍烴）", "p": "1份" },
+        { "n": "黑種草 Nigella sativa（百里醌）", "p": "1份" }
+      ],
+      "note": "等量混合；靶向5-LOX/COX-2；對應NSAID治療適應症"
+    },
+    {
+      "name": "「STOP POLLEN」告別花粉（吸聞）",
+      "sys": "免疫",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "摩洛哥藍艾菊 Tanacetum annuum", "p": "1份" },
+        { "n": "香子蘭菊 Vanillosmopsis erythropappa", "p": "1份" },
+        { "n": "龍艾 Artemisia dracunculus", "p": "1份" }
+      ],
+      "note": "直接瓶口嗅聞或吸聞棒；出現症狀深呼吸幾次，每天2–4次"
+    },
+    {
+      "name": "過敏肌膚抗過敏油（藍菊）",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "黑種草CO2 Nigella sativa", "p": "1份" },
+        { "n": "茶樹 Melaleuca alternifolia", "p": "1份" },
+        { "n": "香子蘭菊 Vanillosmopsis erythropappa", "p": "1份" },
+        { "n": "山雞椒 Litsea cubeba", "p": "1份" },
+        { "n": "東印度檀香 Santalum album", "p": "1份" },
+        { "n": "摩洛哥藍艾菊 Tanacetum annuum", "p": "1份" },
+        { "n": "石栗 Aleurites moluccana", "p": "基礎油" }
+      ],
+      "note": "5% to base oil"
+    },
+    {
+      "name": "沒藥炎症抗炎止痛複方",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "苦沒藥CO2 Commiphora myrrha", "p": "1份" },
+        { "n": "印度乳香CO2 Boswellia serrata", "p": "1份" },
+        { "n": "彼得松柏子木 Leptospermum petersonii", "p": "1份" },
+        { "n": "綠薄荷 Mentha spicata", "p": "1份" },
+        { "n": "八角茴香 Illicium verum", "p": "1份" },
+        { "n": "冬青 Gaultheria procumbens", "p": "1份" },
+        { "n": "香脂果豆木 Eremanthus erytropapus", "p": "1份" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；局部噴塗肩頸/手肘/膝蓋/背部；6歲以下/孕婦禁用"
+    },
+    {
+      "name": "急性膀胱炎七天療程",
+      "sys": "泌尿生殖",
+      "routes": ["口服"],
+      "oils": [
+        { "n": "錫蘭肉桂皮 Cinnamomum verum（第1天）", "p": "2滴/次，最多12次" },
+        { "n": "百里酚百里香 Thymus zygis ct thymol（第2–3天）", "p": "8–10次/天" },
+        { "n": "野蜂香薄荷 Monarda fistulosa（第4–7天）", "p": "遞減至3次/天" }
+      ],
+      "note": "每次2滴於中性藥片，8–12片/天；必須完整七天；Day1每20–40分鐘一次"
+    },
+    {
+      "name": "腸道菌群失調炎症",
+      "sys": "消化系統",
+      "routes": ["口服"],
+      "oils": [
+        { "n": "百里酚百里香 Thymus zygis ct thymol", "p": "2滴" }
+      ],
+      "note": "2滴混合於1茶匙植物油中，口服，每天兩次"
+    },
+    {
+      "name": "鳥型分枝桿菌（克羅恩病輔助）",
+      "sys": "消化系統",
+      "routes": ["口服"],
+      "oils": [
+        { "n": "錫蘭肉桂皮 Cinnamomum verum（第1–2天）", "p": "2–3次/天（嚴重6–8次）" },
+        { "n": "山雞椒 Litsea cubeba（第1–2天）", "p": "同上" },
+        { "n": "百里酚百里香 Thymus zygis ct thymol（第3–7天）", "p": "直到完全好轉" }
+      ],
+      "note": "1–2滴混合於1茶匙植物油，口服每天2次；抗細菌+抑制炎症"
+    },
+    {
+      "name": "感染性卡他性炎症",
+      "sys": "呼吸系統",
+      "routes": ["口服", "吸聞", "皮膚"],
+      "oils": [
+        { "n": "錫蘭肉桂皮（第1天）", "p": "肉桂醛" },
+        { "n": "百里酚百里香（第2–3天）", "p": "百里酚" },
+        { "n": "野蜂香薄荷（第4–7天）", "p": "香葉醇" }
+      ],
+      "note": "口服/皮膚/吸聞/直腸給藥（每次30mg約1滴每日1–2次）"
+    },
+    {
+      "name": "分娩後（產後）感染/膿毒症",
+      "sys": "免疫",
+      "routes": ["口服", "皮膚"],
+      "oils": [
+        { "n": "錫蘭肉桂皮（第1天）", "p": "口服1–2滴，3次/天；腳底1–2滴，2–3次" },
+        { "n": "百里酚百里香（第2–4天）", "p": "同上" },
+        { "n": "蓽澄茄 Piper cubeba（第5–7天）", "p": "口服1–2滴，3次/天" }
+      ],
+      "note": "階段性療法避免細菌產生耐藥性"
+    },
+    {
+      "name": "LTH-17提升免疫（皮膚）",
+      "sys": "免疫",
+      "routes": ["皮膚", "口服"],
+      "oils": [
+        { "n": "百里酚百里香 Thymus zygis ct thymol", "p": "100%（調配按摩油）" }
+      ],
+      "note": "調配成按摩油每天塗抹；香荊芥酚可抑炎但無提升免疫效果，選百里酚"
+    },
+    {
+      "name": "靜脈曲張/靜脈血栓",
+      "sys": "心血管",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "熏陸香 Pistacia lentiscus", "p": "2%" },
+        { "n": "長青絲柏 Cinnamosma fragrans", "p": "1%" },
+        { "n": "熱帶羅勒 Ocimum basilicum ct estragole", "p": "2%" },
+        { "n": "瓊崖海棠 Calophyllum inophyllum", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；洗澡前從腳踝向上塗抹，每天2次"
+    },
+    {
+      "name": "子宮內膜異位症",
+      "sys": "泌尿生殖",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "熱帶羅勒 Ocimum basilicum ct estragole", "p": "33%" },
+        { "n": "龍艾 Artemisia dracunculus", "p": "33%" },
+        { "n": "粉紅胡椒 Schinus molle", "p": "33%" },
+        { "n": "任何植物油", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；月經非常疼痛時每天6–10滴直接塗抹"
+    },
+    {
+      "name": "抗腸道痙攣和感染（食物中毒）",
+      "sys": "消化系統",
+      "routes": ["皮膚", "口服"],
+      "oils": [
+        { "n": "熱帶羅勒 Ocimum basilicum ct estragole", "p": "50%" },
+        { "n": "龍艾 Artemisia dracunculus", "p": "50%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；塗抹按摩或口服；優選Ω3植物油"
+    },
+    {
+      "name": "肌肉緊繃/痙攣（龍艾配方）",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "熱帶羅勒 Ocimum basilicum ct estragole", "p": "50%" },
+        { "n": "龍艾 Artemisia dracunculus", "p": "50%" },
+        { "n": "石栗 Aleurites moluccana", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；龍艾注意！不可連續使用多個月（易導致基因突變）"
+    },
+    {
+      "name": "利膽汁分泌（促膽汁）",
+      "sys": "消化系統",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "綠薄荷 Mentha spicata", "p": "50%" },
+        { "n": "綠橘 Citrus reticulata", "p": "50%" },
+        { "n": "瓊崖海棠 Calophyllum inophyllum", "p": "90ml (基礎油)" }
+      ],
+      "note": "5% to base oil；皮膚塗抹"
+    },
+    {
+      "name": "抗卡他（黏液溶解劑/濃稠黏蛋白）",
+      "sys": "呼吸系統",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "綠薄荷 Mentha spicata", "p": "33%" },
+        { "n": "月桂 Laurus nobilis", "p": "33%" },
+        { "n": "土木香 Inula gravolens", "p": "33%" }
+      ],
+      "note": "吸聞棒或擴香；溶解濃稠黏液"
+    },
+    {
+      "name": "支氣管炎/下呼吸道感染（薄荷尤加利）",
+      "sys": "呼吸系統",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "綠薄荷 Mentha spicata", "p": "20%" },
+        { "n": "藍膠尤加利 Eucalyptus globulus", "p": "80%" },
+        { "n": "任何植物油", "p": "95% (基礎油)" }
+      ],
+      "note": "5% to base oil；3–7歲每腳板2–3滴，每日2–3次；成人5滴，每日2–3次；或直腸給藥（早上用）"
+    },
+    {
+      "name": "抗炎（抑制球蛋白α1和α2）",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "綠薄荷 Mentha spicata", "p": "33%" },
+        { "n": "喜馬拉雅雪松 Cedrus deodara", "p": "33%" },
+        { "n": "伊蘭伊蘭 Cananga odorata", "p": "33%" }
+      ],
+      "note": "皮膚塗抹；球蛋白α1和α2降低代表炎症減輕"
+    },
+    {
+      "name": "預防妊娠紋",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "阿拉伯乳香 Boswellia sacra", "p": "33%" },
+        { "n": "綠橘 Citrus reticulata", "p": "33%" },
+        { "n": "義大利永久花 Helichrysum italicum", "p": "33%" },
+        { "n": "石栗 Aleurites moluccana", "p": "99% (基礎油)" }
+      ],
+      "note": "1% to base oil；每天一次，孕婦盡量少用精油；選用Ω3植物油"
+    },
+    {
+      "name": "預防剖腹後蟹足腫",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "阿拉伯乳香 Boswellia sacra", "p": "20%" },
+        { "n": "義大利永久花 Helichrysum italicum", "p": "20%" },
+        { "n": "岩玫瑰 Cistus ladaniferus", "p": "60%" },
+        { "n": "石栗 Aleurites moluccana", "p": "97% (基礎油)" }
+      ],
+      "note": "3% to base oil；局部塗抹，每天使用兩次"
+    },
+    {
+      "name": "夾手/撞擊引起血腫（永久花配方）",
+      "sys": "骨關節",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "胡椒薄荷 Mentha piperita", "p": "純精油" },
+        { "n": "義大利永久花 Helichrysum italicum", "p": "純精油" }
+      ],
+      "note": "先用胡椒薄荷止痛塗患處，再用永久花直接塗抹；每天兩次"
+    },
+    {
+      "name": "抗衰老配方（岩玫瑰天竺葵）",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "岩玫瑰 Cistus ladanifer L", "p": "0.3%" },
+        { "n": "義大利永久花 Helichrysum italicum", "p": "0.3%" },
+        { "n": "天竺葵 Pelargonium graveolens", "p": "0.4%" },
+        { "n": "玫瑰果 Rosa canina", "p": "99% (基礎油)" }
+      ],
+      "note": "塗抹面部，早晚各一次"
+    },
+    {
+      "name": "法蘭貢Lab複方：意大利永久花精雕線條護理油",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "義大利永久花 Helichrysum italicum", "p": "30 drops" },
+        { "n": "酸刺柏 Juniperus oxycedrus", "p": "30 drops" },
+        { "n": "廣藿香 Pogostemon cablin", "p": "30 drops" },
+        { "n": "岩蘭草 Chrysopogon zizanioides", "p": "30 drops" },
+        { "n": "香脂果豆木 Eremanthus erytropapus", "p": "30 drops" },
+        { "n": "石栗 Aleurites moluccana", "p": "80ml (基礎油)" }
+      ],
+      "note": "制備100ml：各30滴稀釋在80ml石栗油+10ml沙棘果CO₂；每天1–2次按摩"
+    },
+    {
+      "name": "袪黑眼圈",
+      "sys": "皮膚",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "岩玫瑰 Cistus ladanifer L", "p": "0.3%" },
+        { "n": "義大利永久花 Helichrysum italicum", "p": "0.3%" },
+        { "n": "德國洋甘菊 Matricaria recutita", "p": "0.4%" },
+        { "n": "山金車 Arnica montana", "p": "99% (基礎油)" }
+      ],
+      "note": "局部塗抹於眼周"
+    },
+    {
+      "name": "心理因素引起的貪食症（吸聞）",
+      "sys": "神經系統",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "阿拉伯乳香 Boswellia sacra", "p": "5 drops" },
+        { "n": "丁香花苞 Syzygium aromaticum", "p": "10 drops" },
+        { "n": "錫蘭肉桂皮 Cinnamomum verum", "p": "8 drops" },
+        { "n": "海茴香 Crithmum maritimum", "p": "10 drops" }
+      ],
+      "note": "滴在吸聞棒棉條，每天深呼吸吸聞三次；在想吃東西時使用"
+    },
+    {
+      "name": "緩解疼痛：誘導內啡肽（吸聞）",
+      "sys": "神經系統",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "苦橙葉 Citrus aurantium", "p": "50%" },
+        { "n": "綠橘 Citrus reticulata", "p": "50%" }
+      ],
+      "note": "擴香或吸聞"
+    },
+    {
+      "name": "法蘭貢Lab複方：抗焦慮 AROMA SENTEUR NO STRESS",
+      "sys": "神經系統",
+      "routes": ["吸聞"],
+      "oils": [
+        { "n": "苦橙葉 Citrus aurantium", "p": "40%" },
+        { "n": "佛手柑 Citrus bergamia", "p": "40%" },
+        { "n": "八角茴香 Illicium verum", "p": "20%" }
+      ],
+      "note": "擴香或吸聞棒；改善工作表現、減少壓力"
+    },
+    {
+      "name": "免疫激勵NK（苦橙葉薰衣草）",
+      "sys": "免疫",
+      "routes": ["皮膚", "口服"],
+      "oils": [
+        { "n": "古巴香脂 Copaifera officinalis（β-石竹烯）", "p": "適量" },
+        { "n": "黑胡椒 Piper nigrum（β-石竹烯）", "p": "適量" },
+        { "n": "番石榴葉 Psidium guajava（β-石竹烯）", "p": "適量" },
+        { "n": "真正薰衣草 Lavandula angustifolia（乙酸芳樟酯）", "p": "適量" },
+        { "n": "苦橙葉 Citrus aurantium（乙酸芳樟酯）", "p": "適量" },
+        { "n": "依蘭依蘭 Cananga odorata（苯甲酸苄酯）", "p": "適量" }
+      ],
+      "note": "COVID-19：口服預防1–2D/次，2–3次/天；治療1–2D/次，5–6次/天；塗抹前臂手腕"
+    },
+    {
+      "name": "急性鼻病毒性鼻炎感染",
+      "sys": "呼吸系統",
+      "routes": ["吸聞", "皮膚"],
+      "oils": [
+        { "n": "澳洲尤加利 Eucalyptus radiata", "p": "30%" },
+        { "n": "藍膠尤加利 Eucalyptus globulus", "p": "40%" },
+        { "n": "月桂 Laurus nobilis", "p": "30%" },
+        { "n": "石栗 Aleurites moluccana", "p": "99% (基礎油)" }
+      ],
+      "note": "5% to base oil；皮膚塗抹+吸聞"
+    },
+    {
+      "name": "法蘭貢Lab複方：冬季保養 SPÉCIAL HIVER",
+      "sys": "免疫",
+      "routes": ["吸聞", "皮膚"],
+      "oils": [
+        { "n": "澳洲尤加利 Eucalyptus radiata", "p": "等份" },
+        { "n": "芳枸葉 Agonis fragrans", "p": "等份" },
+        { "n": "檸檬 Citrus limon", "p": "等份" }
+      ],
+      "note": "皮膚塗抹或吸聞；冬季免疫保養"
+    },
+    {
+      "name": "法蘭貢Lab複方：呼吸香氣 RESPIRATION",
+      "sys": "呼吸系統",
+      "routes": ["吸聞", "皮膚"],
+      "oils": [
+        { "n": "藍膠尤加利 Eucalyptus globulus", "p": "等份" },
+        { "n": "桉油樟 Cinnamomum camphora ct cineole", "p": "等份" },
+        { "n": "檸檬 Citrus limon", "p": "等份" },
+        { "n": "歐洲赤松 Pinus sylvestris", "p": "等份" }
+      ],
+      "note": "皮膚塗抹或吸聞；呼吸道日常護理"
+    },
+    {
+      "name": "抗抑鬱（尤加利檀香永久花）",
+      "sys": "神經系統",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "藍膠尤加利 Eucalyptus globulus", "p": "1%" },
+        { "n": "檀香 Santalum album", "p": "1%" },
+        { "n": "義大利永久花 Helichrysum italicum", "p": "0.5%" },
+        { "n": "冬青 Gaultheria fragrantissima", "p": "0.5%" },
+        { "n": "任何植物油", "p": "97% (基礎油)" }
+      ],
+      "note": "3% to base oil；調配成按摩油每天塗抹"
+    },
+    {
+      "name": "男性性功能性陽痿",
+      "sys": "泌尿生殖",
+      "routes": ["皮膚"],
+      "oils": [
+        { "n": "錫蘭肉桂皮 Cinnamomum verum", "p": "1%" },
+        { "n": "薑 Zingiber officinalis", "p": "1%" },
+        { "n": "暹羅木 Fokienia hodginsii", "p": "1%" },
+        { "n": "任何植物油", "p": "97% (基礎油)" }
+      ],
+      "note": "用作全身按摩油，重點塗抹腰背部（腎上腺部位）"
+    }
+  ]
