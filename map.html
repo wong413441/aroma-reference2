@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <title>Nature Bliss 芳療科學地圖</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <style>
-        :root { --primary: #0ea5e9; --glass: rgba(255, 255, 255, 0.7); }
-        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%); min-height: 100vh; margin: 0; }
-        h1 { color: #1e293b; text-align: center; margin-bottom: 20px; }
-        #map { height: 500px; width: 100%; border-radius: 16px; border: 4px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 30px; }
-        .filter-controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 25px; }
-        .filter-controls button { padding: 10px 20px; border: none; border-radius: 8px; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); cursor: pointer; font-weight: 600; transition: 0.3s; }
-        .filter-controls button:hover { background: var(--primary); color: white; }
-        #blend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-        .blend-card { background: var(--glass); backdrop-filter: blur(10px); padding: 24px; border-radius: 16px; border-left: 5px solid var(--primary); box-shadow: 0 8px 16px rgba(0,0,0,0.05); }
-        .blend-row { cursor: pointer; padding: 8px; border-radius: 6px; border-bottom: 1px solid rgba(0,0,0,0.05); transition: 0.2s; }
-        .blend-row:hover { background: rgba(14, 165, 233, 0.1); }
-        .blend-info { font-size: 11px; color: #475569; margin-top: 4px; }
-    </style>
 </head>
 <body>
+    <style>
+        :root { --primary: #0ea5e9; }
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: #f1f5f9; margin: 0; }
+        #map { height: 500px; width: 100%; border-radius: 16px; border: 4px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .filter-controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 25px; }
+        .filter-controls button { padding: 10px 20px; border: none; border-radius: 8px; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); cursor: pointer; font-weight: 600; }
+        .filter-controls button:hover { background: var(--primary); color: white; }
+        .blend-card { background: rgba(255,255,255,0.8); padding: 20px; border-radius: 16px; border-left: 5px solid var(--primary); margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .blend-row { cursor: pointer; padding: 10px; border-bottom: 1px solid #eee; }
+        .blend-info { font-size: 11px; color: #64748b; margin-top: 5px; }
+    </style>
 
     <h1>🌿 Nature Bliss 芳療科學地圖</h1>
     <div id="map"></div>
@@ -31,32 +28,40 @@
 
     <div id="blend-grid"></div>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-    // 產地對照國旗代碼
+    // 定義產地國旗對照表
     const flagMap = { "法國": "fr", "澳洲": "au", "中國": "cn", "印度": "in", "西班牙": "es", "秘魯": "pe", "希臘": "gr", "巴西": "br", "美國": "us", "馬達加斯加": "mg", "加拿大": "ca", "衣索比亞": "et", "索馬利亞": "so", "摩洛哥": "ma", "德國": "de", "英國": "gb", "印尼": "id", "墨西哥": "mx" };
 
     let AROMA_DATA = { OIL_DATABASE: {}, BLENDS_LIBRARY: [] };
     let map, markers = {};
 
-    window.onload = async function() {
+    // 確保 Leaflet 載入後才執行初始化
+    document.addEventListener("DOMContentLoaded", async function() {
         map = L.map('map').setView([20, 0], 2);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
 
-        const res = await fetch('data.json');
-        AROMA_DATA = await res.json();
-        
-        renderMapMarkers(AROMA_DATA.OIL_DATABASE);
-        renderB(AROMA_DATA.BLENDS_LIBRARY);
-        generateSystemFilters();
-    };
+        try {
+            const res = await fetch('data.json');
+            AROMA_DATA = await res.json();
+            
+            renderMapMarkers(AROMA_DATA.OIL_DATABASE);
+            renderB(AROMA_DATA.BLENDS_LIBRARY);
+            generateSystemFilters();
+        } catch (err) {
+            console.error("資料庫載入失敗: ", err);
+        }
+    });
 
     function renderMapMarkers(oilDb) {
         for (const [name, info] of Object.entries(oilDb)) {
             if (info.lat && info.lng) {
                 const code = flagMap[info.origin] || 'un';
                 const marker = L.marker([info.lat, info.lng], {
-                    icon: L.divIcon({ html: `<img src="https://flagcdn.com/40x30/${code}.png" style="width:30px; border:2px solid white; box-shadow:0 2px 4px rgba(0,0,0,0.2);">`, iconSize: [30, 22] })
+                    icon: L.divIcon({ 
+                        html: `<img src="https://flagcdn.com/40x30/${code}.png" style="width:30px; border:2px solid white; box-shadow:0 2px 4px rgba(0,0,0,0.2);">`, 
+                        iconSize: [30, 22] 
+                    })
                 }).addTo(map);
                 markers[name] = marker;
                 marker.bindPopup(`<b>${name}</b><br>產地: ${info.origin}<br><button onclick="filterBlendsByOil('${name}')">查看配方</button>`);
@@ -77,7 +82,7 @@
                         <div class="blend-info">科屬: ${info.family} | 產地: ${info.origin} | 效用: ${info.function}</div>
                     </div>`;
             }).join('');
-            grid.innerHTML += `<div class="blend-card"><div class="blend-title">${r.name}</div>${oilsHtml}</div>`;
+            grid.innerHTML += `<div class="blend-card"><div style="font-size:18px; font-weight:bold;">${r.name}</div>${oilsHtml}</div>`;
         });
     }
 
